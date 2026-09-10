@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>dpi — UI Mockup v6.4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e8e6e1;font-family:Inter,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem;min-height:100vh}
+.nav{display:flex;gap:.375rem;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center;max-width:860px}
+.nav button{font:500 .8125rem/1 Inter,system-ui,sans-serif;padding:.5rem .875rem;border:1px solid #ccc;border-radius:6px;background:#fff;cursor:pointer;color:#333;transition:all .15s}
+.nav button:hover{background:#f0eee9}
+.nav button.active{background:#1a7a6d;color:#fff;border-color:#1a7a6d;font-weight:600}
+.frame{width:480px;min-height:640px;border-radius:10px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.1);position:relative;background:#f5f4f0}
+.screen{display:none;min-height:640px}.screen.active{display:flex;flex-direction:column}
+:root{
+  --bg:#f5f4f0;--surface:#ffffff;--ink:#1a1a1a;--ink-2:#5a5a57;--ink-3:#8c8c88;
+  --accent:#1a7a6d;--accent-hover:#156b5f;--accent-soft:#e6f3f1;--accent-line:#a3d5cd;
+  --ok:#2d8a4e;--ok-soft:#e8f5ec;--bad:#c43d2f;--bad-soft:#fdecea;
+  --warn:#b5760a;--warn-soft:#fef4e5;--line:#e5e3de;--line-soft:#eceae6;
+  --radius:10px;--radius-sm:6px
+}
+.win-frame{min-height:640px;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:.9375rem;line-height:1.4;-webkit-font-smoothing:antialiased;position:relative}
+.titlebar{flex:0 0 auto;height:2.75rem;display:flex;align-items:center;justify-content:space-between;padding:0 .75rem 0 1.25rem;background:var(--bg);user-select:none}
+.wordmark{font-size:1rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);display:flex;align-items:center;gap:.5rem}
+.wordmark-badge{font-size:.6875rem;font-weight:600;padding:2px 6px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.win-ctrls{display:flex}
+.win-ctrl{width:2.5rem;height:2rem;border:0;background:transparent;color:var(--ink-2);display:grid;place-items:center;cursor:pointer}
+.win-ctrl:hover{background:rgba(0,0,0,.06)}.win-ctrl.close:hover{background:#c42b1c;color:#fff}
+.win-ctrl svg{width:12px;height:12px;stroke:currentColor;stroke-width:1.5;fill:none}
+.title-right{display:flex;align-items:center}
+.gear-btn{width:2.25rem;height:2.25rem;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--ink-2);display:grid;place-items:center;cursor:pointer}
+.gear-btn:hover{background:rgba(0,0,0,.06)}.gear-btn svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none}
+.page{flex:1 1 auto;min-height:0;padding:0 1.25rem 1.25rem;display:flex;flex-direction:column;overflow-y:auto}
+.card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--line)}
+.btn-primary{height:2.5rem;padding:0 1.25rem;border:0;border-radius:var(--radius-sm);background:var(--accent);color:#fff;font:600 .9375rem/1 Inter,system-ui,sans-serif;cursor:pointer;letter-spacing:-.01em;display:inline-flex;align-items:center;justify-content:center;gap:.5rem}
+.btn-primary:hover{background:var(--accent-hover)}.btn-primary.full{width:100%}.btn-primary.sm{height:2rem;padding:0 .875rem;font-size:.8125rem}
+.btn-secondary{height:2.25rem;padding:0 1rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface);color:var(--ink);font:500 .875rem/1 Inter,system-ui,sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.375rem}
+.btn-secondary:hover{background:#fafaf7}.btn-secondary.sm{height:1.875rem;padding:0 .75rem;font-size:.8125rem}
+.btn-ghost{height:2rem;padding:0 .625rem;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--ink-2);font:500 .8125rem/1 Inter,system-ui,sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn-ghost:hover{background:rgba(0,0,0,.05)}
+.toggle{width:2.75rem;height:1.5rem;padding:2px;border:0;border-radius:1rem;background:#b0aeaa;display:flex;align-items:center;justify-content:flex-start;cursor:pointer;flex-shrink:0;box-sizing:border-box}
+.toggle.on{background:var(--accent);justify-content:flex-end}
+.toggle-knob{width:1.25rem;height:1.25rem;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.field{height:2.75rem;padding:0 1rem;border:1.5px solid var(--line);border-radius:var(--radius-sm);background:var(--surface);color:var(--ink);font:400 .9375rem/1 Inter,system-ui,sans-serif;width:100%;box-sizing:border-box}
+.field::placeholder{color:var(--ink-3)}.field:focus{outline:0;border-color:var(--accent)}
+.field.sm{height:2rem;font-size:.8125rem;padding:0 .625rem;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.status-card{padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.status-text h2{margin:0;font-size:1.375rem;font-weight:700;letter-spacing:-.02em}.status-text h2.on{color:var(--accent)}
+.status-text p{margin:.25rem 0 0;font-size:.875rem;color:var(--ink-2)}
+.strategy-pill{display:inline-flex;align-items:center;gap:.375rem;margin-top:.5rem;padding:2px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent);font-size:.75rem;font-weight:600}
+.status-right{text-align:center}.status-right .label{font-size:.75rem;color:var(--ink-2);margin-top:.25rem}
+.scope-card{padding:1rem 1.25rem}
+.scope-label{font-size:.75rem;font-weight:600;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;margin:0 0 .5rem}
+.seg{height:2.25rem;padding:3px;display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--line-soft);border-radius:var(--radius-sm)}
+.seg.seg-3{grid-template-columns:1fr 1fr 1fr}
+.seg-btn{border:0;border-radius:4px;background:transparent;color:var(--ink);font:600 .8125rem/1 Inter,system-ui,sans-serif;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 .25rem}
+.seg-btn.on{background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.06);color:var(--accent)}
+.scope-note{font-size:.8125rem;color:var(--ink-2);margin:.5rem 0 0}
+.sites-card{padding:.75rem 1rem 1rem}
+.sites-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.sites-head h3{margin:0;font-size:1.0625rem;font-weight:600}
+.add-box{padding:.75rem;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:var(--radius-sm);margin-bottom:.75rem;display:flex;flex-direction:column;gap:.5rem}
+.add-box-row{display:flex;gap:.5rem}
+.site-row{display:flex;align-items:center;padding:.75rem .5rem;border-bottom:1px solid var(--line-soft);gap:.75rem}
+.site-row:last-child{border-bottom:0}
+.site-info{flex:1;min-width:0}.site-host{font-weight:600;font-size:.9375rem}
+.site-state{font-size:.8125rem;color:var(--ok)}.site-state.bad{color:var(--bad)}.site-state.muted{color:var(--ink-3)}
+.badge{width:1.375rem;height:1.375rem;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.badge.ok{background:var(--ok);color:#fff}.badge.bad{background:var(--bad);color:#fff}.badge.muted{background:var(--ink-3);color:#fff}
+.site-actions{display:flex;gap:.25rem;flex-shrink:0}
+.warn-banner{padding:.75rem 1rem;border-radius:var(--radius);background:var(--warn-soft);border:1px solid #e8cfa0;display:flex;align-items:center;justify-content:space-between;gap:.75rem;font-size:.875rem;font-weight:500;color:#8a5a00}
+.warn-banner .btn-primary{height:2rem;padding:0 1rem;font-size:.8125rem;background:var(--bad)}.warn-banner .btn-primary:hover{background:#a83225}
+.first-run-content{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem 2.5rem;text-align:center}
+.first-run-content .heading{font-size:1.625rem;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin:0 0 .5rem}
+.first-run-content .sub{font-size:.9375rem;color:var(--ink-2);margin:0 0 2rem;max-width:340px;line-height:1.5}
+.first-run-content .field{margin-bottom:.75rem;text-align:center}
+.full-mode-box{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2.5rem 2rem;text-align:center}
+.shield-icon{width:4rem;height:4rem;border-radius:50%;background:var(--ok-soft);display:grid;place-items:center;margin-bottom:1rem}
+.shield-icon svg{width:2rem;height:2rem;stroke:var(--ok);stroke-width:1.5;fill:none}
+.full-mode-box h3{margin:0 0 .25rem;font-size:1.125rem;font-weight:600}
+.full-mode-box p{margin:0;font-size:.875rem;color:var(--ink-2);max-width:300px}
+.busy-center{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;text-align:center;gap:1rem}
+.spinner-ring{width:3.5rem;height:3.5rem;border-radius:50%;border:3px solid var(--accent-line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.log-preview{width:100%;max-width:380px;padding:.875rem 1rem;border-radius:var(--radius-sm);background:var(--line-soft);font-family:"Cascadia Mono",Consolas,monospace;font-size:.75rem;line-height:1.6;color:var(--ink-2);text-align:left;white-space:pre-wrap}
+.busy-actions{display:flex;gap:1rem;margin-top:.5rem}
+
+/* KOMPAKT AYARLAR */
+.settings-page{padding:0 1.25rem 1.25rem;flex:1;display:flex;flex-direction:column}
+.settings-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.settings-back{font:600 .875rem/1 Inter,system-ui,sans-serif;color:var(--accent);background:0;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:.375rem}
+.settings-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--line);overflow:hidden}
+.set-item{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.125rem;border-bottom:1px solid var(--line-soft);gap:1rem}
+.set-item:last-child{border-bottom:0}
+.set-item.col{flex-direction:column;align-items:stretch;gap:.625rem}
+.set-label{font-weight:600;font-size:.875rem;color:var(--ink)}
+.set-desc{font-size:.75rem;color:var(--ink-2);margin-top:2px}
+.set-actions-row{display:flex;gap:.5rem;margin-top:.75rem}
+.set-actions-row button{flex:1}
+.footer-links{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:1rem;font-size:.8125rem}
+.footer-link{background:0;border:0;color:var(--ink-3);padding:0;cursor:pointer;font-size:.8125rem;text-decoration:underline}
+.footer-link:hover{color:var(--ink)}
+.footer-link.bad{color:var(--bad)}
+.footer-link.bad:hover{color:#991b1b}
+
+.empty-box{padding:2rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.empty-box p{margin:0;font-size:.875rem;color:var(--ink-2)}
+.job-banner{position:absolute;bottom:1rem;left:1.25rem;right:1.25rem;padding:.625rem 1rem;background:#2b2a28;color:#fff;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 16px rgba(0,0,0,.25);font-size:.8125rem;z-index:20}
+.job-banner-left{display:flex;align-items:center;gap:.625rem}
+.job-spinner-sm{width:.875rem;height:.875rem;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .6s linear infinite}
+.toast{position:absolute;top:3.25rem;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:.5rem 1rem;border-radius:20px;font-size:.8125rem;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,.15);display:flex;align-items:center;gap:.5rem;z-index:30;white-space:nowrap}
+.toast svg{width:14px;height:14px;stroke:#4ade80;fill:none;stroke-width:2}
+.gap{height:.75rem;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="nav" id="nav">
+<button onclick="show(0)">1 · İlk Açılış</button>
+<button onclick="show(1)">2 · Kapalı</button>
+<button onclick="show(2)">3 · Çalışıyor</button>
+<button onclick="show(3)">4 · Açık (Siteler)</button>
+<button onclick="show(4)">5 · Açık (Tüm PC)</button>
+<button onclick="show(5)">6 · Sorunlu</button>
+<button onclick="show(6)" class="active">7 · Ayarlar (DoH Genişletilmiş)</button>
+</div>
+<div class="frame">
+
+<!-- SCREEN 0: İLK AÇILIŞ -->
+<div class="screen" id="s0"><div class="win-frame">
+<div class="titlebar">
+  <div class="wordmark">dpi <span class="wordmark-badge">v2.1</span></div>
+  <div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div>
+</div>
+<div class="first-run-content">
+  <h1 class="heading">Hangi site açılmıyor?</h1>
+  <p class="sub">Engelleme yöntemi tek site üzerinden tespit edilir ve sistem genelinde otomatik uygulanır.</p>
+  <input type="text" class="field" placeholder="örnek: discord.com" value="discord.com">
+  <button class="btn-primary full" onclick="show(2)">Engeli bul ve kur</button>
+</div>
+</div></div>
+
+<!-- SCREEN 1: KAPALI -->
+<div class="screen" id="s1"><div class="win-frame">
+<div class="titlebar">
+  <div class="wordmark">dpi</div>
+  <div class="title-right">
+    <button class="gear-btn" onclick="show(6)" title="Ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.26.46.4.98.42 1.51V12"/></svg></button>
+    <div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div>
+  </div>
+</div>
+<div class="page">
+  <div class="card status-card">
+    <div class="status-text">
+      <h2>Koruma kapalı</h2>
+      <p>Arka plan servisi durduruldu.</p>
+    </div>
+    <div class="status-right"><div class="toggle" onclick="show(3)"><div class="toggle-knob"></div></div><div class="label">Kapalı</div></div>
+  </div>
+  <div class="gap"></div>
+  <div class="card scope-card">
+    <div class="scope-label">Kapsam</div>
+    <div class="seg"><button class="seg-btn on">Sadece siteler</button><button class="seg-btn" onclick="show(4)">Tüm bilgisayar</button></div>
+    <div class="scope-note">Oyunlara ve diğer programlara dokunulmaz</div>
+  </div>
+  <div class="gap"></div>
+  <div class="card sites-card">
+    <div class="sites-head"><h3>Siteler</h3><button class="btn-secondary sm" onclick="show(3)">+ Site ekle</button></div>
+    <div class="empty-box">
+      <p>Henüz özel bir site eklenmedi.</p>
+      <button class="btn-secondary sm" onclick="show(3)">İlk siteyi ekle</button>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<!-- SCREEN 2: ÇALIŞIYOR -->
+<div class="screen" id="s2"><div class="win-frame">
+<div class="titlebar"><div class="wordmark">dpi</div><div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div></div>
+<div class="busy-center">
+  <div class="spinner-ring"></div>
+  <div>
+    <h2 style="margin:0 0 .25rem;font-size:1.25rem;font-weight:700">Engel yöntemi aranıyor</h2>
+    <p style="margin:0;color:var(--ink-2);font-size:.875rem;max-width:320px">Yönetici onayı istenebilir — bir pencere çıkarsa onay verin.</p>
+  </div>
+  <div class="log-preview">probing discord.com...
+dns: FORGED  path: RESET
+searching 42 strategies...
+strategy 12/42: split+disorder → OK (145ms)
+strategy 12 wins.
+installing background service...</div>
+  <div class="busy-actions">
+    <button class="btn-ghost">Ayrıntıyı gizle</button>
+    <button class="btn-ghost" style="color:var(--bad)" onclick="show(1)">İptal</button>
+  </div>
+</div>
+</div></div>
+
+<!-- SCREEN 3: AÇIK (SİTELER) -->
+<div class="screen" id="s3"><div class="win-frame">
+<div class="titlebar">
+  <div class="wordmark">dpi</div>
+  <div class="title-right">
+    <button class="gear-btn" onclick="show(6)" title="Ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.26.46.4.98.42 1.51V12"/></svg></button>
+    <div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div>
+  </div>
+</div>
+<div class="page">
+  <div class="card status-card">
+    <div class="status-text">
+      <h2 class="on">Koruma açık</h2>
+      <p>3 site sorunsuz açılıyor.</p>
+      <div class="strategy-pill">Yöntem: split2+disorder · 145ms</div>
+    </div>
+    <div class="status-right"><div class="toggle on" onclick="show(1)"><div class="toggle-knob"></div></div><div class="label">Açık</div></div>
+  </div>
+  <div class="gap"></div>
+  <div class="card scope-card">
+    <div class="scope-label">Kapsam</div>
+    <div class="seg"><button class="seg-btn on">Sadece siteler</button><button class="seg-btn" onclick="show(4)">Tüm bilgisayar</button></div>
+    <div class="scope-note">Oyunlara ve diğer programlara dokunulmaz</div>
+  </div>
+  <div class="gap"></div>
+  <div class="card sites-card">
+    <div class="sites-head"><h3>Siteler</h3><button class="btn-secondary sm">+ Site ekle</button></div>
+    <div class="site-row">
+      <div class="site-info"><div class="site-host">discord.com</div><div class="site-state">Açılıyor</div></div>
+      <div class="badge ok"><svg width="10" height="10" viewBox="0 0 12 12"><polyline points="2.5 6 5 8.5 9.5 4" fill="none" stroke="#fff" stroke-width="1.5"/></svg></div>
+      <div class="site-actions"><button class="btn-ghost">Test et</button><button class="btn-ghost" style="color:var(--bad)">Sil</button></div>
+    </div>
+    <div class="site-row">
+      <div class="site-info"><div class="site-host">github.com</div><div class="site-state">Açılıyor</div></div>
+      <div class="badge ok"><svg width="10" height="10" viewBox="0 0 12 12"><polyline points="2.5 6 5 8.5 9.5 4" fill="none" stroke="#fff" stroke-width="1.5"/></svg></div>
+      <div class="site-actions"><button class="btn-ghost">Test et</button><button class="btn-ghost" style="color:var(--bad)">Sil</button></div>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<!-- SCREEN 4: AÇIK (TÜM PC) -->
+<div class="screen" id="s4"><div class="win-frame">
+<div class="titlebar">
+  <div class="wordmark">dpi</div>
+  <div class="title-right">
+    <button class="gear-btn" onclick="show(6)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.26.46.4.98.42 1.51V12"/></svg></button>
+    <div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div>
+  </div>
+</div>
+<div class="page">
+  <div class="card status-card">
+    <div class="status-text">
+      <h2 class="on">Koruma açık</h2>
+      <p>Tüm giden bağlantılar korunuyor.</p>
+      <div class="strategy-pill">Yöntem: split2+disorder</div>
+    </div>
+    <div class="status-right"><div class="toggle on" onclick="show(1)"><div class="toggle-knob"></div></div><div class="label">Açık</div></div>
+  </div>
+  <div class="gap"></div>
+  <div class="card scope-card">
+    <div class="scope-label">Kapsam</div>
+    <div class="seg"><button class="seg-btn" onclick="show(3)">Sadece siteler</button><button class="seg-btn on">Tüm bilgisayar</button></div>
+    <div class="scope-note">Tüm internet trafiği korunuyor. Anti-hile yazılımları etkilenebilir.</div>
+  </div>
+  <div class="gap"></div>
+  <div class="card" style="padding:0"><div class="full-mode-box">
+    <div class="shield-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <h3>Tüm bağlantılar korunuyor</h3>
+    <p>Engelli siteler otomatik aşılır. Site ekleme gerekmez.</p>
+  </div></div>
+</div>
+</div></div>
+
+<!-- SCREEN 5: SORUNLU -->
+<div class="screen" id="s5"><div class="win-frame">
+<div class="titlebar">
+  <div class="wordmark">dpi</div>
+  <div class="title-right">
+    <button class="gear-btn" onclick="show(6)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.26.46.4.98.42 1.51V12"/></svg></button>
+    <div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div>
+  </div>
+</div>
+<div class="page">
+  <div class="card status-card">
+    <div class="status-text">
+      <h2 class="on" style="color:var(--bad)">1 site açılmıyor</h2>
+      <p>Engel yöntemi güncellenmeli.</p>
+    </div>
+    <div class="status-right"><div class="toggle on"><div class="toggle-knob"></div></div><div class="label">Açık</div></div>
+  </div>
+  <div class="gap"></div>
+  <div class="warn-banner">
+    <span>github.com açılmıyor</span>
+    <button class="btn-primary" onclick="show(2)">Düzelt</button>
+  </div>
+  <div class="gap"></div>
+  <div class="card scope-card">
+    <div class="scope-label">Kapsam</div>
+    <div class="seg"><button class="seg-btn on">Sadece siteler</button><button class="seg-btn">Tüm bilgisayar</button></div>
+    <div class="scope-note">Oyunlara ve diğer programlara dokunulmaz</div>
+  </div>
+  <div class="gap"></div>
+  <div class="card sites-card">
+    <div class="sites-head"><h3>Siteler</h3><button class="btn-secondary sm">+ Site ekle</button></div>
+    <div class="site-row" style="background:var(--bad-soft)">
+      <div class="site-info"><div class="site-host">github.com</div><div class="site-state bad">Bağlantı kesiliyor</div></div>
+      <div class="badge bad"><svg width="10" height="10" viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9" stroke="#fff" stroke-width="1.5"/><line x1="9" y1="3" x2="3" y2="9" stroke="#fff" stroke-width="1.5"/></svg></div>
+      <div class="site-actions"><button class="btn-ghost">Test et</button><button class="btn-ghost" style="color:var(--bad)">Sil</button></div>
+    </div>
+    <div class="site-row"><div class="site-info"><div class="site-host">discord.com</div><div class="site-state">Açılıyor</div></div><div class="badge ok"><svg width="10" height="10" viewBox="0 0 12 12"><polyline points="2.5 6 5 8.5 9.5 4" fill="none" stroke="#fff" stroke-width="1.5"/></svg></div><div class="site-actions"><button class="btn-ghost">Test et</button><button class="btn-ghost" style="color:var(--bad)">Sil</button></div></div>
+  </div>
+</div>
+</div></div>
+
+<!-- SCREEN 6: YENİ AYARLAR (DOH GENİŞLETİLMİŞ & KOMPAKT) -->
+<div class="screen active" id="s6"><div class="win-frame">
+<div class="titlebar">
+  <div class="wordmark">dpi</div>
+  <div class="win-ctrls"><button class="win-ctrl"><svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg></button><button class="win-ctrl"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button><button class="win-ctrl close" onclick="show(3)"><svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg></button></div>
+</div>
+<div class="settings-page">
+  <div class="settings-top">
+    <button class="settings-back" onclick="show(3)">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="14" y1="8" x2="2" y2="8"/><polyline points="7 3 2 8 7 13"/></svg>
+      Geri Dön
+    </button>
+    <div style="font-size:1.125rem;font-weight:700">Ayarlar</div>
+    <div style="width:50px"></div>
+  </div>
+
+  <div class="settings-card">
+    <!-- STRATEJİ -->
+    <div class="set-item">
+      <div>
+        <div class="set-label">Aktif Yöntem</div>
+        <div class="set-desc">split2+disorder (Strateji #12)</div>
+      </div>
+      <button class="btn-secondary sm" onclick="show(2)">Yeniden Bul</button>
+    </div>
+
+    <!-- DNS SEGMENTED + DOH EXPANDABLE -->
+    <div class="set-item col">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="set-label">DNS Modu</div>
+        <div class="set-desc" id="dnsDesc">Şifreli güvenli tünel</div>
+      </div>
+      <div class="seg seg-3" id="dnsSeg">
+        <button class="seg-btn" onclick="setDns(this, 'none', 'Sistem DNS kullanılır')">Dokunma</button>
+        <button class="seg-btn" onclick="setDns(this, 'hosts', 'Hosts dosyasına yazar')">Hosts</button>
+        <button class="seg-btn on" onclick="setDns(this, 'doh', 'Şifreli güvenli tünel')">Şifreli DoH</button>
+      </div>
+
+      <!-- DOH DETAY PANELİ (SADECE DOH SEÇİLİYKEN AÇILIR) -->
+      <div id="dohOptions" style="display:flex;flex-direction:column;gap:.375rem;padding-top:.25rem">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem">
+          <span style="font-size:.75rem;color:var(--ink-2);font-weight:600">DoH Servisi:</span>
+          <select class="field sm" style="width:auto;min-width:200px" id="dohProvider" onchange="onDohChange(this.value)">
+            <option value="cf">Cloudflare (1.1.1.1)</option>
+            <option value="google">Google (8.8.8.8)</option>
+            <option value="adguard">AdGuard (Reklam engelleyici)</option>
+            <option value="quad9">Quad9 (Güvenlik / Malware)</option>
+            <option value="nextdns">NextDNS</option>
+            <option value="custom">Özel DoH Sunucusu...</option>
+          </select>
+        </div>
+        <div id="customDohBox" style="display:none;flex-direction:column;gap:.375rem;background:var(--line-soft);padding:.5rem;border-radius:4px;margin-top:.25rem">
+          <input type="text" class="field sm" placeholder="DoH URL: https://..." value="https://dns.example.com/dns-query">
+          <input type="text" class="field sm" placeholder="IP Adresi: 1.2.3.4" value="1.2.3.4">
+        </div>
+      </div>
+    </div>
+
+    <!-- OTOMATİK BAŞLATMA -->
+    <div class="set-item">
+      <div>
+        <div class="set-label">Windows ile Başlat</div>
+        <div class="set-desc">Açılışta arka planda sessizce başlar</div>
+      </div>
+      <div class="toggle on" onclick="this.classList.toggle('on')"><div class="toggle-knob"></div></div>
+    </div>
+  </div>
+
+  <!-- BAKIM BUTONLARI -->
+  <div style="margin-top:1rem">
+    <div style="font-size:.75rem;font-weight:600;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.5rem">Hızlı Bakım</div>
+    <div class="set-actions-row">
+      <button class="btn-secondary sm">Adresleri Yenile</button>
+      <button class="btn-secondary sm">DNS Sıfırla</button>
+      <button class="btn-secondary sm">Bağlantı Testi</button>
+    </div>
+  </div>
+
+  <!-- BİLGİ & ÇIKIŞ / KALDIR (ALT BAR) -->
+  <div class="footer-links">
+    <button class="footer-link" onclick="alert('Uygulama kapatıldı')">Uygulamadan Çık</button>
+    <button class="footer-link bad" onclick="confirm('Tüm servisler ve ayarlar kaldırılsın mı?')">Her Şeyi Kaldır</button>
+  </div>
+</div>
+</div></div>
+
+</div>
+
+<script>
+function show(i){
+  document.querySelectorAll(".screen").forEach(function(s,j){s.classList.toggle("active",j===i)});
+  document.querySelectorAll(".nav button").forEach(function(b,j){b.classList.toggle("active",j===i)});
+}
+function setDns(btn, mode, desc){
+  document.querySelectorAll("#dnsSeg .seg-btn").forEach(function(b){b.classList.remove("on")});
+  btn.classList.add("on");
+  document.getElementById("dnsDesc").textContent = desc;
+  var opt = document.getElementById("dohOptions");
+  opt.style.display = (mode === 'doh') ? 'flex' : 'none';
+}
+function onDohChange(val){
+  var box = document.getElementById("customDohBox");
+  box.style.display = (val === 'custom') ? 'flex' : 'none';
+}
+</script>
+</body>
+</html>

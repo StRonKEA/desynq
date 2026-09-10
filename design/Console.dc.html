@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 980px; height: 660px; box-sizing: border-box; background: #0a0d0f; color: #e3e8ea; font-family: 'IBM Plex Mono', ui-monospace, monospace; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; gap: 14px; padding: 0 14px; height: 36px; border-bottom: 1px solid #1e252b;">
+    <span style="font-size: 11px; letter-spacing: 0.08em; color: #b9c3c8;">dpi</span>
+    <span style="font-size: 11px; color: #7e8b92;">&mdash;</span>
+    <span style="font-size: 11px; color: #8b979e;">2 sites &middot; targeted (6 addresses) &middot; service running</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #7e8b92;">closes to tray</span>
+    <div style="display: flex; gap: 2px;">
+      <div style="width: 24px; height: 22px; display: flex; align-items: center; justify-content: center;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8b979e" stroke-width="2" stroke-linecap="round"><path d="M4 12h16"></path></svg>
+      </div>
+      <div style="width: 24px; height: 22px; display: flex; align-items: center; justify-content: center;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8b979e" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- transcript -->
+  <div style="flex-grow: 1; overflow: hidden; padding: 14px 16px; font-size: 12px; line-height: 1.75; display: flex; flex-direction: column;">
+
+    <div style="color: #8b979e;"><span style="color: oklch(0.78 0.13 155);">&gt;</span> dpi auto -install -fix-dns discord.com pornhub.com</div>
+
+    <div style="height: 8px;"></div>
+
+    <div style="display: flex; gap: 10px;"><span style="color: #7e8b92; width: 62px; flex-shrink: 0;">probe</span><span style="color: #b9c3c8;">discord.com &nbsp; DNS <span style="color: oklch(0.80 0.13 25);">HIJACKED</span> &nbsp; PATH <span style="color: oklch(0.80 0.13 25);">RESET</span></span></div>
+    <div style="display: flex; gap: 10px;"><span style="width: 62px; flex-shrink: 0;"></span><span style="color: #b9c3c8;">pornhub.com &nbsp; DNS <span style="color: oklch(0.80 0.13 25);">HIJACKED</span> &nbsp; PATH <span style="color: oklch(0.80 0.13 25);">RESET</span></span></div>
+    <div style="display: flex; gap: 10px;"><span style="width: 62px; flex-shrink: 0;"></span><span style="color: #8b979e;">both layers censored &mdash; fixing one alone will not open the site</span></div>
+
+    <div style="height: 8px;"></div>
+
+    <div style="display: flex; gap: 10px;"><span style="color: #7e8b92; width: 62px; flex-shrink: 0;">search</span><span style="color: #b9c3c8;">77 candidates screened, 44 survived</span></div>
+
+    <!-- progress, as text -->
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <span style="width: 62px; flex-shrink: 0;"></span>
+      <span style="color: #8b979e;">verifying</span>
+      <span style="display: inline-block; width: 210px; height: 4px; background: #1b2228; border-radius: 2px; overflow: hidden;">
+        <span style="display: block; width: 63%; height: 100%; background: oklch(0.78 0.13 155);"></span>
+      </span>
+      <span style="color: #8b979e;">28/44 &middot; 10 attempts each</span>
+    </div>
+
+    <div style="height: 10px;"></div>
+
+    <!-- the ranking table -->
+    <div style="border: 1px solid #1e252b; border-radius: 3px; background: #0d1114;">
+      <div style="display: grid; grid-template-columns: 26px 1fr 88px 74px 78px 52px; padding: 8px 12px; border-bottom: 1px solid #1e252b; font-size: 11px; letter-spacing: 0.08em; color: #7e8b92;">
+        <span></span><span>STRATEGY</span><span style="text-align: right;">MEDIAN-TLS</span><span style="text-align: right;">SPREAD</span><span style="text-align: right;">OK/ATT</span><span style="text-align: right;">TIER</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 26px 1fr 88px 74px 78px 52px; padding: 8px 12px; background: oklch(0.78 0.13 155 / 0.07); font-size: 11.5px;">
+        <span style="color: oklch(0.80 0.13 155);">A</span>
+        <span style="color: #e3e8ea;">multidisorder:pos=1</span>
+        <span style="text-align: right; color: #e3e8ea;">70ms</span>
+        <span style="text-align: right; color: #8b979e;">&plusmn;21</span>
+        <span style="text-align: right; color: #8b979e;">20/20</span>
+        <span style="text-align: right; color: #8b979e;">safe</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 26px 1fr 88px 74px 78px 52px; padding: 8px 12px; font-size: 11.5px;">
+        <span style="color: #7e8b92;">A</span>
+        <span style="color: #b9c3c8;">multisplit:pos=1</span>
+        <span style="text-align: right; color: #b9c3c8;">72ms</span>
+        <span style="text-align: right; color: #8b979e;">&plusmn;19</span>
+        <span style="text-align: right; color: #8b979e;">20/20</span>
+        <span style="text-align: right; color: #8b979e;">safe</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 26px 1fr 88px 74px 78px 52px; padding: 8px 12px; font-size: 11.5px;">
+        <span style="color: #7e8b92;">A</span>
+        <span style="color: #b9c3c8;">fakedsplit:pos=midsld:tcp_md5</span>
+        <span style="text-align: right; color: #b9c3c8;">74ms</span>
+        <span style="text-align: right; color: #8b979e;">&plusmn;24</span>
+        <span style="text-align: right; color: #8b979e;">19/20</span>
+        <span style="text-align: right; color: #8b979e;">safe</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 26px 1fr 88px 74px 78px 52px; padding: 8px 12px; border-top: 1px solid #161c21; font-size: 11.5px;">
+        <span style="color: #7e8b92;">D</span>
+        <span style="color: #8b979e;">wssize:wsize=1:scale=6</span>
+        <span style="text-align: right; color: #8b979e;">378ms</span>
+        <span style="text-align: right; color: #8b979e;">&plusmn;44</span>
+        <span style="text-align: right; color: #8b979e;">20/20</span>
+        <span style="text-align: right; color: #8b979e;">safe</span>
+      </div>
+      <div style="padding: 8px 12px; border-top: 1px solid #1e252b; font-size: 11px; color: #8b979e;">
+        34 more in group A, indistinguishable at this spread &nbsp;<span style="color: #7e8b92;">[expand]</span>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="display: flex; gap: 10px;"><span style="color: #7e8b92; width: 62px; flex-shrink: 0;">chosen</span><span style="color: #e3e8ea;">multidisorder:pos=1 &nbsp;<span style="color: #8b979e;">fewest stages of the tied group</span></span></div>
+  </div>
+
+  <!-- command line -->
+  <div style="border-top: 1px solid #1e252b; background: #0c0f12;">
+    <div style="display: flex; align-items: center; gap: 9px; padding: 9px 16px;">
+      <span style="color: oklch(0.78 0.13 155); font-size: 12px;">&gt;</span>
+      <span style="color: #e3e8ea; font-size: 12px;">doc</span>
+      <span style="display: inline-block; width: 7px; height: 15px; background: #8b979e;"></span>
+    </div>
+    <div style="padding: 0 16px 10px 34px; display: flex; flex-direction: column; gap: 3px;">
+      <div style="display: flex; gap: 12px; font-size: 11.5px;"><span style="color: #e3e8ea; width: 66px;">doctor</span><span style="color: #8b979e;">check the install against what resolution returns now</span></div>
+      <div style="display: flex; gap: 12px; font-size: 11.5px;"><span style="color: #b9c3c8; width: 66px;">refresh</span><span style="color: #8b979e;">reinstall the same strategy with current addresses</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

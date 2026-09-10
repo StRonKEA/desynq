@@ -1,0 +1,38 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "A - Evidence", "x": 0, "y": 0, "w": 980, "h": 660 },
+    { "file": "Console.dc.html", "title": "B - Console", "x": 1080, "y": 0, "w": 980, "h": 660 },
+    { "file": "Calm.dc.html", "title": "C - One answer", "x": 2160, "y": 0, "w": 980, "h": 660 }
+  ],
+  "annotations": [
+    {
+      "id": "note-brief",
+      "x": 0,
+      "y": -300,
+      "w": 420,
+      "text": "dpi - Windows desktop UI, three directions.\n\nThe axis they differ on: how much evidence is on screen before you ask for it. Everything shown is real vocabulary from the CLI (states, commands, measurement columns), not invented copy.\n\nAll three assume the same architecture: the window calls the existing CLI, closes to the tray, and the service keeps running without it."
+    },
+    {
+      "id": "note-a",
+      "x": 520,
+      "y": -300,
+      "w": 420,
+      "text": "A - Evidence (recommended)\n\nThe window is the measurement record. The two censorship layers (DNS and path) are always visible as a chain, because fixing one alone does not open the site - the failure this tool has actually made.\n\nTradeoff: it asks to be read. Someone who wanted a switch gets a report."
+    },
+    {
+      "id": "note-b",
+      "x": 1600,
+      "y": -300,
+      "w": 420,
+      "text": "B - Console\n\nThe CLI, given a window and a tray. Nothing is summarised away: the ranking table, the tied group, the spread. A command line with completion is the whole action surface.\n\nTradeoff: no affordance for anyone who does not already know the commands - and it makes the tray/service story feel optional."
+    },
+    {
+      "id": "note-c",
+      "x": 2680,
+      "y": -300,
+      "w": 420,
+      "text": "C - One answer\n\nOne state, one switch, receipts folded away. Calm, and honest about the tray being the normal home.\n\nTradeoff - the real one: this tool's value is that it says 'I could not verify that'. Shrinking SUSPECT / UNKNOWN / LOCAL-FAIL into a small amber word is how a false success gets shipped again."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,38 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "A - One method, one scope choice", "x": 0, "y": 0, "w": 1000, "h": 700 },
+    { "file": "TwoLayers.dc.html", "title": "B - A scope per layer", "x": 1120, "y": 0, "w": 1000, "h": 700 },
+    { "file": "Switch.dc.html", "title": "C - One switch", "x": 2240, "y": 0, "w": 1000, "h": 700 }
+  ],
+  "annotations": [
+    {
+      "id": "note-model",
+      "x": 0,
+      "y": -420,
+      "w": 480,
+      "text": "The model changed, not just the layout.\n\nEvery earlier design treated a SITE as the subject. That was wrong. The method that defeats a block belongs to the PROVIDER, not the site: it is the same DPI box inspecting every name, so a strategy that fools it for discord.com fools it for anything blocked the same way.\n\nSo the subject is \"my provider's block and what defeats it\", and the sites become a scope list plus the names used to prove it still works. Per-site scoping exists for exactly one reason - anti-cheat software reacts to a driver that watches every connection - not because strategies differ per site.\n\nOne consequence worth designing around: the names you add do two different jobs that were previously conflated. They are the targets a method is measured against, and they are what the kernel filter covers. In machine-wide mode the second job disappears and the first remains."
+    },
+    {
+      "id": "note-a",
+      "x": 560,
+      "y": -420,
+      "w": 480,
+      "text": "A - One method, one scope choice  (recommended)\n\nThe headline states what your provider does and what beats it. Below it, the only real decision: machine-wide or listed names, each with its honest cost. The list sits at the bottom, relabelled \"checked against\" - it proves the method rather than defining the product.\n\nShown on the TurkNet case, where the block is DNS-only. That is worth surfacing loudly: no driver is needed, so machine-wide costs nothing and is the right default there.\n\nTradeoff: it merges the two layers into one story. When only one of them is broken that is a simplification; when both are, you lose the ability to scope them separately."
+    },
+    {
+      "id": "note-b",
+      "x": 1120,
+      "y": -420,
+      "w": 480,
+      "text": "B - A scope per layer\n\nShows the truth: there are two mechanisms, and each can be off, cover listed names, or cover the machine. Address lookups fix with a resolver change or hosts pins; the connection fixes with a driver.\n\nShown on the Vodafone case where BOTH layers are censored - the situation A has to simplify. Note the two scopes differ here on purpose: machine-wide DNS is free, machine-wide driver is not.\n\nTradeoff: two controls and a vocabulary to learn. It is the most honest and the least simple."
+    },
+    {
+      "id": "note-c",
+      "x": 2240,
+      "y": -420,
+      "w": 480,
+      "text": "C - One switch\n\nOne toggle, one segmented scope control, the list folded to a single line, everything else behind Advanced.\n\nThe simplest thing that could work, and it fits the model: one method, one scope.\n\nTradeoff - the real one: it cannot say \"the DNS half is fixed and the traffic half is not\", which is exactly the half-fixed state this tool has already shipped a false success from. A single switch has to claim yes or no."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dpi · yeni arayüz önerisi</title>
+<style>
+  :root {
+    --paper:#f3f1eb; --ink:#12161c; --mute:#5a6470; --line:#d6d1c6;
+    --ok:#1f6b4a; --ok-soft:#e4f2ea; --frame:#0e1114; --chrome:#151a1e;
+    --text:#eaeef0; --muted:#96a3aa; --accent:#3a8563; --warn:#c4892a;
+    --sans:"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.45}
+  header{padding:28px 36px;background:#fffef9;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  header h1{margin:0 0 8px;font-size:24px;letter-spacing:-.02em}
+  header p{margin:0;max-width:760px;color:var(--mute);font-size:14.5px}
+  main{padding:28px 36px 80px;display:grid;gap:28px}
+  .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .ref{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px}
+  .ref b{display:block;margin-bottom:4px}
+  .ref span{color:var(--mute)}
+  .idea{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .idea-h{padding:18px 20px;border-bottom:1px solid var(--line);background:#fffef9}
+  .idea-h h2{margin:0 0 6px;font-size:20px}
+  .idea-h p{margin:0;color:var(--mute);font-size:14px}
+  .mock-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:0}
+  .win{background:var(--frame);color:var(--text);min-height:460px;display:flex;flex-direction:column;font-size:13px}
+  .top{height:48px;padding:0 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #1d2429}
+  .brand{color:#4ec98a;font-weight:600}.brand span{color:var(--text);margin-left:6px}
+  .body{padding:18px 18px 20px;flex:1}
+  .big-status{text-align:center;padding:10px 8px 18px}
+  .orb{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:28px;border:3px solid #4ec98a;color:#4ec98a}
+  .orb.off{border-color:#5a6570;color:#5a6570}
+  .orb.warn{border-color:#e0a33c;color:#e0a33c}
+  h3{margin:0;font-size:20px;letter-spacing:-.02em}
+  .sub{margin:8px auto 0;color:var(--muted);max-width:280px;font-size:13px;line-height:1.45}
+  .switch{margin:18px auto 0;width:84px;height:44px;border-radius:999px;background:#2f6f52;position:relative}
+  .switch::after{content:"";position:absolute;right:5px;top:5px;width:34px;height:34px;border-radius:50%;background:#fff}
+  .switch.off{background:#3a4248}.switch.off::after{left:5px;right:auto}
+  .modes{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .mode{padding:12px;border-radius:12px;border:1px solid #1d2429;background:#151a1e;text-align:left}
+  .mode.on{border-color:#3a6b52;background:#13241c}
+  .mode b{display:block;font-size:13px;margin-bottom:3px}
+  .mode span{color:var(--muted);font-size:11.5px;line-height:1.35}
+  .ghost-box{margin-top:14px;padding:14px;border-radius:12px;border:1px dashed #2b343a;color:#7d8a91;font-size:12.5px;text-align:center}
+  .list{margin-top:14px}
+  .row{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border-radius:10px;background:#151a1e;margin-top:8px}
+  .add{margin-top:10px;display:flex;gap:8px}
+  .add i{flex:1;padding:10px;border-radius:10px;background:#151a1e;border:1px solid #1d2429;color:#7d8a91;font-style:normal;font-size:12.5px}
+  .btn{background:#2f6f52;color:#fff;border:0;border-radius:10px;padding:10px 14px;font-weight:600;font-size:13px}
+  .cap{padding:12px 16px;border-top:1px solid var(--line);font-size:13px;background:#fff}
+  .cap strong{display:block;margin-bottom:2px}
+  .cap span{color:var(--mute)}
+  .rules{padding:16px 20px 20px}
+  .rules ol{margin:0;padding-left:18px;color:var(--mute);font-size:14px}
+  .rules li{margin:8px 0}
+  .pick{position:fixed;bottom:0;left:0;right:0;background:#fffef9;border-top:1px solid var(--line);padding:14px 36px;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <h1>dpi · akıllı arayüz önerisi (kod yok)</h1>
+  <p>
+    Önceki sürüm gerçekten “aynı UI + Türkçe”ydi — haklısın. Bu sayfa VPN / DPI uygulamalarından
+    çıkan kalıplarla <b>kapsama göre değişen</b> bir ana ekran öneriyor. Beğenirsen onu yazarız.
+  </p>
+</header>
+
+<main>
+  <section>
+    <h2 style="margin:0 0 10px;font-size:16px">Araştırmadan çıkanlar</h2>
+    <div class="refs">
+      <div class="ref">
+        <b>Cloudflare WARP / 1.1.1.1</b>
+        <span>Ana ekranda büyük güç anahtarı. Mod seçimi “Basic / Full” gibi sade isimler. Karmaşık ayar menüde.</span>
+      </div>
+      <div class="ref">
+        <b>Mullvad VPN</b>
+        <span>Set-and-forget: yeşil/kırmızı durum, tek bakışta anlaşılır. Split tunneling ayrı ekran — liste ancak o mod açılınca.</span>
+      </div>
+      <div class="ref">
+        <b>Nord / Norton split tunnel</b>
+        <span>Önce mod (tümü / sadece seçilenler), sonra liste. Liste görünürlüğü moda bağlı — tam senin istediğin kural.</span>
+      </div>
+      <div class="ref">
+        <b>GoodbyeDPI UI / zapret GUI</b>
+        <span>Başlat–durdur + tray. Log ikincil. Güç kullanıcı preset’leri ayarda; günlük kullanıcıya tek düğme.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="idea">
+    <div class="idea-h">
+      <h2>Öneri: “Güç + Mod” ana ekranı</h2>
+      <p>
+        Tek sayfa. Üstte açık/kapalı. Altında iki mod. Site listesi <b>yalnızca “Sadece siteler” modunda</b> görünür.
+        “Tüm bilgisayar”dayken site ekleme yok — çünkü amaç zaten her şey.
+      </p>
+    </div>
+    <div class="mock-row">
+      <div>
+        <div class="win">
+          <div class="top"><div class="brand">⌁<span>dpi</span></div><div style="margin-left:auto;color:#7d8a91;font-size:12px">Kapalı</div></div>
+          <div class="body">
+            <div class="big-status">
+              <div class="orb off">○</div>
+              <h3>Kapalı</h3>
+              <p class="sub">Engeller olduğu gibi. Açınca bu bilgisayarda düzelme başlar.</p>
+              <div class="switch off" title="Ana anahtar"></div>
+            </div>
+            <div class="modes">
+              <div class="mode on"><b>Tüm bilgisayar</b><span>Her site. Liste yok.</span></div>
+              <div class="mode"><b>Sadece siteler</b><span>Listeyi sen seçersin.</span></div>
+            </div>
+            <div class="ghost-box">Bu modda site listesi gizlidir — eklemene gerek yok.</div>
+          </div>
+        </div>
+        <div class="cap">
+          <strong>1 · Tüm bilgisayar (varsayılan öneri oyun oynamıyorsan dikkat)</strong>
+          <span>Site sekmesi / ekleme formu yok. Tek iş: aç–kapa. Anti-hile uyarısı küçük not.</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="win">
+          <div class="top"><div class="brand">⌁<span>dpi</span></div><div style="margin-left:auto;color:#4ec98a;font-size:12px">Açık · siteler</div></div>
+          <div class="body">
+            <div class="big-status">
+              <div class="orb">●</div>
+              <h3>Açık</h3>
+              <p class="sub">Sadece aşağıdaki siteler düzeltiliyor. Diğer programlar dokunulmuyor.</p>
+              <div class="switch" title="Ana anahtar"></div>
+            </div>
+            <div class="modes">
+              <div class="mode"><b>Tüm bilgisayar</b><span>Her site.</span></div>
+              <div class="mode on"><b>Sadece siteler</b><span>Listeyi sen seçersin.</span></div>
+            </div>
+            <div class="list">
+              <div class="row"><div><b>discord.com</b><div style="color:#4ec98a;font-size:12px">Açılıyor</div></div><div style="color:#6f8fb8">⋯</div></div>
+              <div class="row"><div><b>github.com</b><div style="color:#e5675f;font-size:12px">Hâlâ kapalı</div></div><div style="color:#6f8fb8">⋯</div></div>
+              <div class="add"><i>Site ekle…</i><button class="btn" type="button">Ekle</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">
+          <strong>2 · Sadece siteler (oyun / anti-hile için)</strong>
+          <span>Mod değişince liste belirir. Ekle / sil / durum burada. Ayarlar dişli ikonda.</span>
+        </div>
+      </div>
+    </div>
+    <div class="rules">
+      <h3 style="margin:0 0 8px;font-size:15px">Akıllı kurallar (bunu kodlarız)</h3>
+      <ol>
+        <li><b>Ana nesne güç anahtarı</b> — WARP/Mullvad gibi. Açınca ölçer + uygun düzeltmeyi uygular (UAC bir kez).</li>
+        <li><b>Mod, sekmeyi yönetir</b> — “Tüm bilgisayar” ⇒ Siteler paneli/sekmesi yok. “Sadece siteler” ⇒ liste ana iş.</li>
+        <li><b>İlk açılış</b> — boş config: “Bir site yaz veya tüm bilgisayarı aç” (iki büyük kart). Eski 3 sekmeli Status değil.</li>
+        <li><b>Log</b> — altta ince çubuk / Ayrıntı; yarım ekran asla.</li>
+        <li><b>Gelişmiş</b> — DNS pin vs resolver, strateji adı, refresh → Ayarlar (dişli). Ana sayfada yok.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="idea">
+    <div class="idea-h">
+      <h2>Neden önceki “Türkçe çeviri” yetmezdi?</h2>
+      <p>Aynı bilgi mimarisi duruyordu: Status + Sites + Settings her zaman yan yana. Mod “tüm makine” olsa bile Sites sekmesi duruyor → kafa karışıklığı. Asıl düzeltme IA (bilgi mimarisi), dil değil.</p>
+    </div>
+  </section>
+</main>
+
+<div class="pick">
+  <b>Seçim:</b> Bu “Güç + Mod” yönünü uygulayayım mı?
+  Cevap: <i>evet</i> / <i>evet ama varsayılan sadece siteler olsun</i> / <i>hayır, şunu değiştir: …</i>
+</div>
+</body>
+</html>

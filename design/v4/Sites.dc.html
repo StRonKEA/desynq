@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 48px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 12.5px; color: #7d8a91;">TurkNet &middot; running in the background</span>
+  </div>
+
+  <div style="padding: 0 26px; display: flex; gap: 24px; border-bottom: 1px solid #1d2429; flex-shrink: 0;">
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Status</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; font-weight: 600; color: #eaeef0; box-shadow: inset 0 -2px 0 #4ec98a;">Sites <span style="color: #96a3aa;">3</span></div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Test</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Measurements</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Settings</div>
+  </div>
+
+  <div style="padding: 20px 26px 0; flex-grow: 1; min-height: 0; display: flex; flex-direction: column;">
+
+    <!-- the add row is the first thing on the tab, not hidden in a corner -->
+    <div style="display: flex; gap: 9px; align-items: center;">
+      <input readonly value="youtube.com" style="flex-grow: 1; max-width: 380px; box-sizing: border-box; padding: 10px 13px; font-family: inherit; font-size: 14px; color: #eaeef0; background: #151a1e; border: 1px solid #3a6b52; border-radius: 7px; outline: none;">
+      <div style="padding: 10px 20px; border-radius: 7px; background: #2f6f52; font-size: 13.5px; font-weight: 600; color: #f2fbf6;">Add and test</div>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">Import a list</span>
+    </div>
+    <div style="margin-top: 8px; font-size: 12.5px; color: #7d8a91;">
+      Adding a name measures it straight away. Just the bare domain &mdash; no https:// and no path.
+    </div>
+
+    <!-- the list, with a verb on every row -->
+    <div style="margin-top: 22px; display: flex; flex-direction: column;">
+
+      <div style="display: grid; grid-template-columns: 14px 1fr 210px 76px 26px; gap: 14px; align-items: center; padding: 0 4px 9px; border-bottom: 1px solid #1d2429; font-size: 12.5px; letter-spacing: 0.06em; color: #7d8a91;">
+        <span></span><span>NAME</span><span>IN A BROWSER</span><span></span><span></span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 14px 1fr 210px 76px 26px; gap: 14px; align-items: center; padding: 13px 4px; border-bottom: 1px solid #171c20;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a;"></span>
+        <span style="font-size: 14px;">discord.com</span>
+        <span style="font-size: 13px; color: #96a3aa;">opens</span>
+        <span style="font-size: 13px; color: #6f8fb8;">Test</span>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 14px 1fr 210px 76px 26px; gap: 14px; align-items: center; padding: 13px 4px; border-bottom: 1px solid #171c20;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a;"></span>
+        <span style="font-size: 14px;">pornhub.com</span>
+        <span style="font-size: 13px; color: #96a3aa;">opens</span>
+        <span style="font-size: 13px; color: #6f8fb8;">Test</span>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 14px 1fr 210px 76px 26px; gap: 14px; align-items: center; padding: 13px 4px; border-bottom: 1px solid #171c20;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #7d8a91;"></span>
+        <span style="font-size: 14px; color: #c3cdd2;">github.com</span>
+        <span style="font-size: 13px; color: #7d8a91;">was never blocked</span>
+        <span style="font-size: 13px; color: #6f8fb8;">Test</span>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+
+      <!-- the row that was just added, mid-measurement -->
+      <div style="display: grid; grid-template-columns: 14px 1fr 210px 76px 26px; gap: 14px; align-items: center; padding: 13px 4px; border-bottom: 1px solid #171c20; background: #12171a;">
+        <span style="width: 10px; height: 10px; border: 2px solid #2b343a; border-top-color: #4ec98a; border-radius: 50%; box-sizing: border-box;"></span>
+        <span style="font-size: 14px;">youtube.com</span>
+        <span style="font-size: 13px; color: #96a3aa;">checking&hellip;</span>
+        <span></span>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 18px; padding: 13px 16px; border-radius: 8px; background: #151a1e; display: flex; align-items: flex-start; gap: 11px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#96a3aa" stroke-width="1.9" stroke-linecap="round" style="flex-shrink: 0; margin-top: 1px;">
+        <circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path>
+      </svg>
+      <div style="font-size: 13px; color: #96a3aa; line-height: 1.6;">
+        The scope is <b style="color: #c3cdd2; font-weight: 600;">everything on this machine</b> right now, so this list does not limit
+        what works &mdash; it is what gets re&#8209;checked to prove the method is still good.
+        <span style="color: #6f8fb8;">Change the scope</span>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="padding: 14px 2px 18px; border-top: 1px solid #171c20; display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 12.5px; color: #7d8a91;">Subdomains are not included &mdash; a site loading assets from another name needs that name too.</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">Re-test all</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

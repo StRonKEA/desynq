@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 980px; height: 660px; box-sizing: border-box; background: #101418; color: #eef2f4; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column;">
+
+  <!-- title bar -->
+  <div style="display: flex; align-items: center; padding: 0 18px; height: 44px; border-bottom: 1px solid #232b32;">
+    <span style="font-size: 14px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    <div style="flex-grow: 1;"></div>
+    <div style="display: flex; gap: 4px;">
+      <div style="width: 28px; height: 26px; display: flex; align-items: center; justify-content: center;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9aa6ad" stroke-width="2" stroke-linecap="round"><path d="M4 12h16"></path></svg>
+      </div>
+      <div style="width: 28px; height: 26px; display: flex; align-items: center; justify-content: center;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9aa6ad" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; padding: 0 40px;">
+
+    <!-- the one answer -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
+      <div style="width: 68px; height: 68px; border-radius: 50%; border: 2px solid oklch(0.78 0.13 155); display: flex; align-items: center; justify-content: center;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.80 0.13 155)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      </div>
+      <div style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em;">3 sites are open</div>
+      <div style="font-size: 15px; color: #9aa6ad; text-align: center; line-height: 1.5; max-width: 460px;">
+        Last checked 4 minutes ago, the way a browser sees it.
+        Nothing outside these 3 sites goes through the driver.
+      </div>
+    </div>
+
+    <!-- the one control -->
+    <div style="display: flex; align-items: center; gap: 14px; padding: 14px 20px; border: 1px solid #2a333a; border-radius: 8px; background: #161c21;">
+      <div style="width: 44px; height: 25px; border-radius: 13px; background: oklch(0.62 0.12 155); display: flex; align-items: center; justify-content: flex-end; padding: 0 3px; box-sizing: border-box;">
+        <div style="width: 19px; height: 19px; border-radius: 50%; background: #f4f8f9;"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <div style="font-size: 15px; font-weight: 500;">Bypass is on</div>
+        <div style="font-size: 13px; color: #9aa6ad;">Starts with Windows &middot; runs without this window</div>
+      </div>
+    </div>
+
+    <!-- sites, one line each -->
+    <div style="width: 100%; max-width: 560px; border: 1px solid #232b32; border-radius: 8px; overflow: hidden;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 13px 18px; background: #14191e;">
+        <span style="font-size: 15px; flex-grow: 1;">discord.com</span>
+        <span style="font-size: 13px; color: oklch(0.80 0.13 155);">open</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 13px 18px; border-top: 1px solid #1d242a; background: #14191e;">
+        <span style="font-size: 15px; flex-grow: 1;">pornhub.com</span>
+        <span style="font-size: 13px; color: oklch(0.80 0.13 155);">open</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 13px 18px; border-top: 1px solid #1d242a; background: #14191e;">
+        <span style="font-size: 15px; flex-grow: 1;">youtube.com</span>
+        <span style="font-size: 13px; color: oklch(0.82 0.13 75);">could not check</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 9px; padding: 12px 18px; border-top: 1px solid #1d242a;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9aa6ad" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        <span style="font-size: 14px; color: #9aa6ad;">Add a site</span>
+      </div>
+    </div>
+
+    <!-- everything else, folded away -->
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9aa6ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+      <span style="font-size: 14px; color: #9aa6ad;">How this was decided</span>
+      <span style="font-size: 14px; color: #79858c;">&mdash; strategy, measurements, addresses</span>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; padding: 0 18px; height: 40px; border-top: 1px solid #232b32;">
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #79858c;">Closing this window keeps it running.</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

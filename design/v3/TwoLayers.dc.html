@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 50px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 13px; color: #7d8a91;">Vodafone TR &middot; mobile</span>
+    <div style="width: 30px; height: 30px; margin-left: 14px; display: flex; align-items: center; justify-content: center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7d8a91" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 8.6a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V10a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div style="padding: 14px 26px 0; flex-grow: 1; min-height: 0; display: flex; flex-direction: column;">
+
+    <div style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em;">This connection blocks in two places</div>
+    <div style="margin-top: 8px; font-size: 13.5px; color: #96a3aa; max-width: 700px; line-height: 1.55;">
+      Both have to be fixed for a site to open, and each can cover just the names you list or the
+      whole machine. The method is the same either way &mdash; it is your provider's block, not the
+      site's.
+    </div>
+
+    <!-- LAYER 1 -->
+    <div style="margin-top: 22px; border-radius: 10px; background: #151a1e; padding: 18px 22px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #4ec98a; flex-shrink: 0;"></span>
+        <span style="font-size: 16px; font-weight: 600;">Address lookups</span>
+        <span style="font-size: 13px; color: #96a3aa;">your provider answers with a block page</span>
+        <div style="flex-grow: 1;"></div>
+        <div style="display: flex; border: 1px solid #2b343a; border-radius: 7px; overflow: hidden;">
+          <span style="padding: 7px 13px; font-size: 13px; color: #96a3aa;">Off</span>
+          <span style="padding: 7px 13px; font-size: 13px; color: #96a3aa; border-left: 1px solid #2b343a;">Listed names</span>
+          <span style="padding: 7px 13px; font-size: 13px; font-weight: 600; color: #f2fbf6; background: #2f6f52; border-left: 1px solid #2b343a;">Whole machine</span>
+        </div>
+      </div>
+      <div style="margin-top: 11px; margin-left: 21px; font-size: 13px; color: #96a3aa; line-height: 1.6; max-width: 700px;">
+        This machine now asks an encrypted resolver instead. No driver, nothing for anti&#8209;cheat to
+        see. <span style="color: #7d8a91;">Listed names only would pin them in the hosts file and leave your resolver alone.</span>
+      </div>
+    </div>
+
+    <!-- LAYER 2 -->
+    <div style="margin-top: 12px; border-radius: 10px; background: #151a1e; padding: 18px 22px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #4ec98a; flex-shrink: 0;"></span>
+        <span style="font-size: 16px; font-weight: 600;">The connection itself</span>
+        <span style="font-size: 13px; color: #96a3aa;">killed the moment the site name is seen</span>
+        <div style="flex-grow: 1;"></div>
+        <div style="display: flex; border: 1px solid #2b343a; border-radius: 7px; overflow: hidden;">
+          <span style="padding: 7px 13px; font-size: 13px; color: #96a3aa;">Off</span>
+          <span style="padding: 7px 13px; font-size: 13px; font-weight: 600; color: #f2fbf6; background: #2f6f52; border-left: 1px solid #2b343a;">Listed names</span>
+          <span style="padding: 7px 13px; font-size: 13px; color: #96a3aa; border-left: 1px solid #2b343a;">All traffic</span>
+        </div>
+      </div>
+      <div style="margin-top: 11px; margin-left: 21px; font-size: 13px; color: #96a3aa; line-height: 1.6; max-width: 700px;">
+        Only the addresses of your listed names reach the driver, so anti&#8209;cheat software sees
+        nothing.
+        <span style="color: #e0a33c;">All traffic would work for any site without listing it &mdash; at the cost of a
+        driver that watches every connection, which Vanguard and EAC read as interference.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 22px; display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-size: 12.5px; letter-spacing: 0.08em; color: #7d8a91;">LISTED NAMES</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">Add a name</span>
+    </div>
+
+    <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="padding: 7px 12px; border-radius: 20px; background: #1a2025; font-size: 13px;">discord.com &nbsp;<span style="color: #7d8a91;">&times;</span></span>
+      <span style="padding: 7px 12px; border-radius: 20px; background: #1a2025; font-size: 13px;">pornhub.com &nbsp;<span style="color: #7d8a91;">&times;</span></span>
+      <span style="padding: 7px 12px; border-radius: 20px; background: #1a2025; font-size: 13px; color: #c3cdd2;">github.com &nbsp;<span style="color: #7d8a91;">&times;</span></span>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="padding: 16px 4px 20px; display: flex; align-items: center; gap: 12px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #96a3aa;">multidisorder:pos=1</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">&middot;</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">all 3 names open, verified 4 minutes ago</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">How this was decided</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

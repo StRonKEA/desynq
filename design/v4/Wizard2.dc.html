@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 48px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 13px; color: #6f8fb8;">Run it in the background</span>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; padding: 0 26px;">
+
+    <div style="margin-top: 44px; width: 100%; max-width: 620px;">
+
+      <div style="font-size: 24px; font-weight: 600; letter-spacing: -0.02em;">Working out what your provider does</div>
+      <div style="margin-top: 10px; font-size: 13.5px; color: #96a3aa;">discord.com &middot; started 38 seconds ago</div>
+
+      <!-- the steps, so waiting is legible rather than a spinner -->
+      <div style="margin-top: 28px; display: flex; flex-direction: column;">
+
+        <div style="display: flex; gap: 14px; align-items: flex-start; padding: 13px 0;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><path d="M20 6L9 17l-5-5"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 14.5px; font-weight: 600;">Found how the block works</span>
+            <span style="font-size: 13px; color: #96a3aa; line-height: 1.55;">
+              Two things are wrong: the address you are given is a block page, and the connection to the
+              real address is killed the moment the site name is seen.
+            </span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; align-items: flex-start; padding: 13px 0; border-top: 1px solid #171c20;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><path d="M20 6L9 17l-5-5"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 14.5px; font-weight: 600;">Fixed the address lookups</span>
+            <span style="font-size: 13px; color: #96a3aa;">This machine now asks an encrypted resolver.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; align-items: flex-start; padding: 13px 0; border-top: 1px solid #171c20;">
+          <span style="width: 15px; height: 15px; border: 2px solid #2b343a; border-top-color: #4ec98a; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; margin-top: 2px;"></span>
+          <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; min-width: 0;">
+            <span style="font-size: 14.5px; font-weight: 600;">Trying ways around the connection block</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="flex-grow: 1; height: 4px; border-radius: 2px; background: #1d2429; overflow: hidden;">
+                <div style="width: 58%; height: 100%; background: #4ec98a;"></div>
+              </div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #96a3aa;">44 of 77</span>
+            </div>
+            <span style="font-size: 13px; color: #96a3aa;">
+              <b style="color: #8fdcb2; font-weight: 600;">31 already work.</b> The rest of the run is to find which of them is
+              fastest &mdash; you can stop here and take one.
+            </span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; align-items: flex-start; padding: 13px 0; border-top: 1px solid #171c20; opacity: 0.55;">
+          <span style="width: 15px; height: 15px; border-radius: 50%; border: 2px solid #2b343a; flex-shrink: 0; margin-top: 2px;"></span>
+          <span style="font-size: 14.5px; font-weight: 600; color: #96a3aa;">Open the site the way a browser does, and check the page is genuine</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 26px; display: flex; align-items: center; gap: 12px;">
+        <div style="padding: 10px 20px; border-radius: 7px; border: 1px solid #2b343a; font-size: 13.5px;">Take the first that works</div>
+        <div style="padding: 10px 18px; border-radius: 7px; font-size: 13.5px; color: #c3cdd2;">Cancel</div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="width: 100%; max-width: 620px; margin-bottom: 24px; font-size: 12.5px; color: #7d8a91; line-height: 1.6;">
+      Nothing is installed until this finishes. Each attempt is a single connection to the site
+      itself &mdash; no third party is involved and nothing is uploaded anywhere.
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

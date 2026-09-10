@@ -1,0 +1,15 @@
+{
+  "artboards": [
+    { "file": "index.html", "title": "v5 · three directions", "x": 0, "y": 0, "w": 1280, "h": 900 }
+  ],
+  "annotations": [
+    {
+      "id": "note",
+      "x": 0,
+      "y": -180,
+      "w": 520,
+      "text": "Redesign board. Pick A (quiet toast job), B (side activity rail), or C (modal job sheet). Do not implement until the user locks a direction."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

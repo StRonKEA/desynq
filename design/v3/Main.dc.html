@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 50px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7d8a91" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 8.6a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V10a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div style="padding: 12px 26px 0; flex-grow: 1; min-height: 0; display: flex; flex-direction: column;">
+
+    <!-- THE SUBJECT: what your provider does, and what defeats it. Not a site. -->
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+      <div style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid #4ec98a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+        <div style="font-size: 24px; font-weight: 600; letter-spacing: -0.02em;">Your provider's block is defeated</div>
+        <div style="font-size: 14px; line-height: 1.55; color: #96a3aa; max-width: 660px;">
+          TurkNet blocks by <b style="color: #c3cdd2; font-weight: 600;">forging DNS answers only</b> &mdash; the connection itself is
+          never touched. That means no kernel driver is needed, and no anti&#8209;cheat software has
+          anything to react to.
+        </div>
+      </div>
+    </div>
+
+    <!-- THE DECISION: one method, two scopes. This is what the app is for. -->
+    <div style="margin-top: 24px; border-radius: 10px; background: #151a1e; padding: 20px 22px 8px;">
+      <div style="font-size: 12.5px; letter-spacing: 0.08em; color: #7d8a91;">APPLY IT TO</div>
+
+      <div style="margin-top: 15px; display: flex; gap: 14px; align-items: flex-start; padding-bottom: 16px;">
+        <span style="width: 17px; height: 17px; border-radius: 50%; border: 2px solid #4ec98a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a;"></span>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-size: 15px; font-weight: 600;">Everything on this machine
+            <span style="margin-left: 8px; padding: 2px 8px; border-radius: 4px; background: #23402f; font-size: 12px; font-weight: 600; color: #8fdcb2;">recommended here</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.6; color: #96a3aa; max-width: 620px;">
+            Every blocked site works without listing it, because the block is the same block
+            everywhere. On this connection it costs nothing: the fix is a resolver change, not a driver.
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 14px; align-items: flex-start; border-top: 1px solid #1d2429; padding: 16px 0;">
+        <span style="width: 17px; height: 17px; border-radius: 50%; border: 2px solid #4d585f; flex-shrink: 0; margin-top: 1px;"></span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-size: 15px; font-weight: 600; color: #c3cdd2;">Only the sites I list</div>
+          <div style="font-size: 13px; line-height: 1.6; color: #96a3aa; max-width: 620px;">
+            Nothing else on the machine is affected at all. Choose this if you would rather keep the
+            change as small as possible &mdash; or on a connection where the fix does need a driver
+            and you play a game with anti&#8209;cheat.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sites become the list of names to prove it with, not the subject -->
+    <div style="margin-top: 22px; display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-size: 12.5px; letter-spacing: 0.08em; color: #7d8a91;">CHECKED AGAINST</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">names used to find the method and prove it still works</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">Add a name</span>
+    </div>
+
+    <div style="margin-top: 11px; display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; gap: 14px; padding: 12px 4px; border-bottom: 1px solid #171c20;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a; flex-shrink: 0;"></span>
+        <span style="font-size: 14px; width: 170px;">discord.com</span>
+        <span style="font-size: 13px; color: #96a3aa;">opens</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 12px 4px; border-bottom: 1px solid #171c20;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a; flex-shrink: 0;"></span>
+        <span style="font-size: 14px; width: 170px;">pornhub.com</span>
+        <span style="font-size: 13px; color: #96a3aa;">opens</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 12px 4px;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #7d8a91; flex-shrink: 0;"></span>
+        <span style="font-size: 14px; width: 170px; color: #c3cdd2;">github.com</span>
+        <span style="font-size: 13px; color: #7d8a91;">was never blocked</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-size: 15px; color: #7d8a91;">&times;</span>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="padding: 16px 4px 20px; display: flex; align-items: center; gap: 12px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #96a3aa;">encrypted DNS &middot; 1.1.1.1</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">&middot;</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">verified 2 minutes ago</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">How this was decided</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">&middot;</span>
+      <span style="font-size: 13px; color: #6f8fb8;">Turn it off</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

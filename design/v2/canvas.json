@@ -1,0 +1,46 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "A - One answer", "x": 0, "y": 0, "w": 1000, "h": 660 },
+    { "file": "OneList.dc.html", "title": "B - Just the list", "x": 1120, "y": 0, "w": 1000, "h": 660 },
+    { "file": "Hero.dc.html", "title": "C - Headline and tabs", "x": 2240, "y": 0, "w": 1000, "h": 660 },
+    { "file": "HeroEvidence.dc.html", "title": "C - the Measurements tab", "x": 2240, "y": 800, "w": 1000, "h": 660 }
+  ],
+  "annotations": [
+    {
+      "id": "note-why",
+      "x": 0,
+      "y": -340,
+      "w": 460,
+      "text": "Why a redesign.\n\nThe built version stacked five bordered panels of equal weight, all in monospace, with the verdict words in the far corner and no button anywhere on the site view. The eye had no place to start, and the one question a user has - is it working, and what do I press - was not on the screen.\n\nAll three directions below fix the same three things: one clear answer at the top, the three-layer diagnosis reduced to a quiet line, and hierarchy made with type and space instead of borders. Monospace is now only for addresses and strategy names."
+    },
+    {
+      "id": "note-a",
+      "x": 540,
+      "y": -340,
+      "w": 460,
+      "text": "A - One answer, one button\n\nOne surface per site. A plain-language sentence says what is wrong, one button fixes it, and the whole DNS/path/browser diagnosis becomes a single row of three small labels underneath. Measurements sit behind a link.\n\nBest when you usually care about one site at a time.\n\nTradeoff: with ten sites you are clicking through a list to see the state of each."
+    },
+    {
+      "id": "note-b",
+      "x": 1120,
+      "y": -340,
+      "w": 460,
+      "text": "B - Just the list\n\nThere is no detail panel at all. The list is the whole interface: a dot, the name, what is wrong in words, and that row's own button. A row expands in place for two lines of explanation.\n\nThe simplest of the three - one screen, no navigation, every state visible at once.\n\nTradeoff: no room for the measurement table, so it lives in a separate window or is dropped."
+    },
+    {
+      "id": "note-c",
+      "x": 2240,
+      "y": -340,
+      "w": 460,
+      "text": "C - Headline and tabs\n\nA headline band answers the question once for the whole machine, with the single next action beside it. Everything dense moves behind the Measurements tab - the second frame below shows it, so nothing is lost, it is just no longer in the way.\n\nBest if you want the depth kept but out of sight.\n\nTradeoff: two places to look, and a tab strip is one more thing to learn."
+    },
+    {
+      "id": "note-c2",
+      "x": 2240,
+      "y": 700,
+      "w": 460,
+      "text": "C, second tab - where the numbers went. Same content the built version pushed onto the main screen, here on a tab nobody has to visit."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

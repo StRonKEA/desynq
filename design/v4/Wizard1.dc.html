@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 48px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 13px; color: #6f8fb8;">Skip and set it up myself</span>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; padding: 0 26px;">
+
+    <div style="margin-top: 56px; width: 100%; max-width: 540px;">
+
+      <div style="font-size: 27px; font-weight: 600; letter-spacing: -0.025em;">Name one site you cannot reach</div>
+      <div style="margin-top: 12px; font-size: 14px; color: #96a3aa; line-height: 1.6;">
+        One is enough. Whatever your provider is doing to it, it is almost certainly doing to
+        everything else it blocks &mdash; so finding the way around it once is the whole job.
+      </div>
+
+      <div style="margin-top: 26px; display: flex; gap: 9px;">
+        <input readonly value="https://discord.com/channels/@me" style="flex-grow: 1; box-sizing: border-box; padding: 13px 15px; font-family: inherit; font-size: 15px; color: #eaeef0; background: #151a1e; border: 1px solid #3a6b52; border-radius: 8px; outline: none;">
+      </div>
+      <div style="margin-top: 9px; display: flex; align-items: center; gap: 8px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+        <span style="font-size: 12.5px; color: #96a3aa;">Paste a whole link if that is what you have &mdash; we will read
+          <b style="color: #c3cdd2; font-weight: 600;">discord.com</b> out of it.</span>
+      </div>
+
+      <div style="margin-top: 26px; display: flex; align-items: center; gap: 14px;">
+        <div style="padding: 12px 24px; border-radius: 8px; background: #2f6f52; font-size: 14.5px; font-weight: 600; color: #f2fbf6;">Find a way around it</div>
+        <span style="font-size: 13px; color: #7d8a91;">a minute or two &middot; asks for administrator if a driver is needed</span>
+      </div>
+
+      <div style="margin-top: 34px; padding-top: 22px; border-top: 1px solid #1d2429;">
+        <div style="font-size: 12.5px; letter-spacing: 0.08em; color: #7d8a91;">OR PICK ONE</div>
+        <div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px;">
+          <span style="padding: 8px 13px; border-radius: 20px; border: 1px solid #2b343a; font-size: 13px; color: #c3cdd2;">discord.com</span>
+          <span style="padding: 8px 13px; border-radius: 20px; border: 1px solid #2b343a; font-size: 13px; color: #c3cdd2;">x.com</span>
+          <span style="padding: 8px 13px; border-radius: 20px; border: 1px solid #2b343a; font-size: 13px; color: #c3cdd2;">wikipedia.org</span>
+          <span style="padding: 8px 13px; border-radius: 20px; border: 1px solid #2b343a; font-size: 13px; color: #c3cdd2;">roblox.com</span>
+          <span style="padding: 8px 13px; border-radius: 20px; border: 1px solid #2b343a; font-size: 13px; color: #c3cdd2;">pornhub.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <!-- pre-flight, measured in this project: three real traps worth naming before a search -->
+    <div style="width: 100%; max-width: 540px; margin-bottom: 26px; padding: 13px 16px; border-radius: 8px; background: #1c1a14; display: flex; align-items: flex-start; gap: 11px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0a33c" stroke-width="2" stroke-linecap="round" style="flex-shrink: 0; margin-top: 1px;">
+        <path d="M12 8v5M12 16.5v.5"></path><circle cx="12" cy="12" r="9"></circle>
+      </svg>
+      <div style="font-size: 13px; color: #d8c9a4; line-height: 1.6;">
+        <b style="color: #edd9a8; font-weight: 600;">NextDNS is blocking encrypted lookups on this machine.</b>
+        Nothing can be measured through it, so turn its bypass&#8209;blocking off first.
+        <span style="color: #6f8fb8;">Show me where</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

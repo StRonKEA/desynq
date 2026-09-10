@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 48px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 12.5px; color: #7d8a91;">TurkNet &middot; running in the background</span>
+  </div>
+
+  <div style="padding: 0 26px; display: flex; gap: 24px; border-bottom: 1px solid #1d2429; flex-shrink: 0;">
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Status</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Sites <span style="color: #7d8a91;">3</span></div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Test</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Networks</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; font-weight: 600; color: #eaeef0; box-shadow: inset 0 -2px 0 #4ec98a;">Activity</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Settings</div>
+  </div>
+
+  <div style="padding: 20px 26px 0; flex-grow: 1; min-height: 0; display: flex; flex-direction: column;">
+
+    <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.015em;">What has happened</div>
+    <div style="margin-top: 7px; font-size: 13px; color: #96a3aa; line-height: 1.55; max-width: 680px;">
+      Kept so that &ldquo;it stopped working last Tuesday&rdquo; has an answer. The tool repairs itself
+      first and only speaks up when it cannot.
+    </div>
+
+    <div style="margin-top: 22px; display: flex; flex-direction: column;">
+
+      <div style="display: grid; grid-template-columns: 20px 96px 1fr; gap: 14px; padding: 13px 2px; border-bottom: 1px solid #171c20; align-items: start;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a; margin-top: 6px;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #7d8a91; margin-top: 2px;">just now</span>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 13.5px;">Checked 3 names &mdash; all opened</span>
+          <span style="font-size: 12.5px; color: #7d8a91;">background check &middot; nothing changed</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 20px 96px 1fr; gap: 14px; padding: 13px 2px; border-bottom: 1px solid #171c20; align-items: start;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ec98a; margin-top: 6px;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #7d8a91; margin-top: 2px;">09:12</span>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 13.5px;">Network changed to TurkNet &mdash; its saved method was applied</span>
+          <span style="font-size: 12.5px; color: #7d8a91;">no search needed &middot; took under a second</span>
+        </div>
+      </div>
+
+      <!-- the self-healing story, which is the point of keeping this log -->
+      <div style="display: grid; grid-template-columns: 20px 96px 1fr; gap: 14px; padding: 13px 2px; border-bottom: 1px solid #171c20; align-items: start; background: #12171a;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #e0a33c; margin-top: 6px;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #7d8a91; margin-top: 2px;">yesterday<br>23:40</span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-size: 13.5px; font-weight: 600;">Vodafone TR changed something &mdash; the old method stopped working</span>
+          <span style="font-size: 12.5px; color: #96a3aa; line-height: 1.6;">
+            Searched again on its own and found <span style="font-family: 'IBM Plex Mono', monospace;">multidisorder:pos=1</span>,
+            verified it, and kept going. You were not asked because nothing needed deciding.
+          </span>
+          <span style="font-size: 12.5px; color: #6f8fb8;">See the run</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 20px 96px 1fr; gap: 14px; padding: 13px 2px; border-bottom: 1px solid #171c20; align-items: start;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #e5675f; margin-top: 6px;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #7d8a91; margin-top: 2px;">yesterday<br>21:05</span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-size: 13.5px;">Could not measure anything &mdash; encrypted lookups were unreachable</span>
+          <span style="font-size: 12.5px; color: #96a3aa; line-height: 1.6;">
+            NextDNS was blocking them. Nothing was installed or changed on a guess.
+          </span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 20px 96px 1fr; gap: 14px; padding: 13px 2px; align-items: start;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #7d8a91; margin-top: 6px;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #7d8a91; margin-top: 2px;">3 Sep</span>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 13.5px; color: #c3cdd2;">First set up on TurkNet</span>
+          <span style="font-size: 12.5px; color: #7d8a91;">wizard &middot; discord.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="padding: 14px 2px 18px; border-top: 1px solid #171c20; display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 12.5px; color: #7d8a91;">Kept on this machine only. Nothing is sent anywhere.</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-size: 13px; color: #6f8fb8;">Copy for a bug report</span>
+      <span style="font-size: 12.5px; color: #7d8a91;">&middot;</span>
+      <span style="font-size: 13px; color: #6f8fb8;">Clear</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

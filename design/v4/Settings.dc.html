@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 700px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; padding: 0 26px; height: 48px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 12.5px; color: #7d8a91;">TurkNet &middot; running in the background</span>
+  </div>
+
+  <div style="padding: 0 26px; display: flex; gap: 24px; border-bottom: 1px solid #1d2429; flex-shrink: 0;">
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Status</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Sites <span style="color: #7d8a91;">3</span></div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Test</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Networks</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; color: #7d8a91;">Activity</div>
+    <div style="padding: 0 2px 11px; font-size: 14px; font-weight: 600; color: #eaeef0; box-shadow: inset 0 -2px 0 #4ec98a;">Settings</div>
+  </div>
+
+  <div style="padding: 22px 26px 0; flex-grow: 1; min-height: 0; display: flex; flex-direction: column;">
+
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+
+      <!-- keeping itself alive: the whole self-healing behaviour, in two lines -->
+      <div style="display: flex; gap: 13px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #171c20;">
+        <span style="width: 16px; height: 16px; border-radius: 4px; background: #4ec98a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0e1114" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 14.5px; font-weight: 600;">Keep it working without asking me</span>
+          <span style="font-size: 13px; color: #96a3aa; line-height: 1.55; max-width: 640px;">
+            Re&#8209;checks every 6 hours. If a method dies it searches for a new one and applies it,
+            then tells you in Activity. You are only interrupted when it cannot fix it.
+          </span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 13px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #171c20;">
+        <span style="width: 16px; height: 16px; border-radius: 4px; background: #4ec98a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0e1114" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 14.5px; font-weight: 600;">Start with Windows, in the tray</span>
+          <span style="font-size: 13px; color: #96a3aa; line-height: 1.55; max-width: 640px;">
+            Signs in to an icon, no window. Registered for this user only, so it never needs
+            administrator rights to start.
+          </span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 13px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #171c20;">
+        <span style="width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #4d585f; box-sizing: border-box; flex-shrink: 0; margin-top: 1px;"></span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 14.5px; font-weight: 600; color: #c3cdd2;">Tell me when a site is fixed</span>
+          <span style="font-size: 13px; color: #96a3aa; line-height: 1.55; max-width: 640px;">
+            Off by default. A tool that works is a tool you should be able to forget about.
+          </span>
+        </div>
+      </div>
+
+      <!-- the browser-cache trap, measured in this project, turned into a setting -->
+      <div style="display: flex; gap: 13px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #171c20;">
+        <span style="width: 16px; height: 16px; border-radius: 4px; background: #4ec98a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0e1114" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 14.5px; font-weight: 600;">Warn me when my browser needs restarting</span>
+          <span style="font-size: 13px; color: #96a3aa; line-height: 1.55; max-width: 640px;">
+            Chrome&#8209;family browsers keep their own address cache that no command can clear. When
+            the system is fixed and the browser still is not, only a restart helps &mdash; and this
+            is the one case where you genuinely have to be told.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 18px; display: flex; gap: 42px;">
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <span style="font-size: 12.5px; color: #7d8a91;">Windows service name</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #c3cdd2;">dpi-bypass</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <span style="font-size: 12.5px; color: #7d8a91;">Configuration</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #c3cdd2;">D:\Proje\dpi\config</span>
+      </div>
+      <div style="flex-grow: 1;"></div>
+      <div style="display: flex; align-items: flex-end;">
+        <span style="font-size: 13px; color: #6f8fb8;">Advanced &rarr;</span>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="padding: 16px 0 20px; border-top: 1px solid #171c20; display: flex; align-items: center; gap: 14px;">
+      <div style="padding: 10px 18px; border-radius: 7px; border: 1px solid #4a2c2a; font-size: 13.5px; color: #e5675f;">Undo everything and uninstall</div>
+      <span style="font-size: 12.5px; color: #96a3aa; line-height: 1.55;">
+        Removes the service and the driver, puts your DNS back the way it was, and clears the
+        hosts&#8209;file entries. Saved network methods are kept unless you clear them.
+      </span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dpi · arayüz yönleri v5</title>
+<style>
+  :root {
+    --ink: #10141a;
+    --paper: #f4f2ec;
+    --line: #d9d4c8;
+    --mute: #5c6570;
+    --pick: #1f6b4a;
+    --pick-soft: #e5f3eb;
+    --warn: #9a6b12;
+    --bad: #a33b35;
+    --frame: #0e1114;
+    --chrome: #151a1e;
+    --text: #eaeef0;
+    --muted: #96a3aa;
+    --ok: #4ec98a;
+    --btn: #2f6f52;
+    --sans: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+    --mono: "Cascadia Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  header.board {
+    padding: 28px 36px 18px;
+    border-bottom: 1px solid var(--line);
+    background: #fffef9;
+    position: sticky; top: 0; z-index: 20;
+  }
+  header.board h1 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.02em; }
+  header.board p { margin: 0; color: var(--mute); max-width: 820px; font-size: 14px; }
+  .pick-row {
+    margin-top: 14px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .pick-row button {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+  }
+  .pick-row button.on {
+    background: var(--pick);
+    border-color: var(--pick);
+    color: #fff;
+    font-weight: 600;
+  }
+  .note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--mute);
+  }
+  main { padding: 28px 36px 80px; }
+  .dir {
+    display: none;
+    animation: in .25s ease;
+  }
+  .dir.on { display: block; }
+  @keyframes in { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none;} }
+  .dir-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    margin-bottom: 22px;
+    align-items: start;
+  }
+  .dir-head h2 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.03em; }
+  .dir-head .thesis { margin: 0; font-size: 15px; color: var(--mute); max-width: 640px; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--pick-soft);
+    color: var(--pick);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .pages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 28px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(16,20,26,.06);
+  }
+  .card figcaption {
+    padding: 12px 16px 14px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .card figcaption strong { display: block; margin-bottom: 2px; }
+  .card figcaption span { color: var(--mute); }
+  .win {
+    background: var(--frame);
+    color: var(--text);
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-size: 12.5px;
+  }
+  .top {
+    height: 42px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .brand { color: var(--ok); display: flex; gap: 7px; align-items: center; font-weight: 600; }
+  .brand span { color: var(--text); }
+  .tabs { display: flex; gap: 14px; margin-left: 18px; }
+  .tabs b { color: var(--text); border-bottom: 2px solid var(--ok); padding-bottom: 10px; }
+  .tabs i { color: #7d8a91; font-style: normal; }
+  .mach { margin-left: auto; color: #7d8a91; font-size: 11px; }
+  .body { flex: 1; min-height: 0; padding: 16px 16px 14px; overflow: hidden; position: relative; }
+  .hero { display: flex; gap: 12px; align-items: flex-start; }
+  .mark {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--ok); color: var(--ok);
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .mark.bad { border-color: #e5675f; color: #e5675f; }
+  .mark.warn { border-color: #e0a33c; color: #e0a33c; }
+  h3 { margin: 0; font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
+  .lede { margin: 5px 0 0; color: var(--muted); font-size: 11.5px; line-height: 1.45; max-width: 340px; }
+  .panel {
+    margin-top: 14px;
+    background: var(--chrome);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .pt { font-size: 11px; font-weight: 600; color: #c3cdd2; margin-bottom: 6px; }
+  .choice {
+    display: flex; gap: 10px; padding: 9px 0;
+    border-top: 1px solid #1d2429;
+  }
+  .choice:first-of-type { border-top: 0; }
+  .radio {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid #4d585f; margin-top: 2px; flex-shrink: 0;
+  }
+  .choice.on .radio { border-color: var(--ok); box-shadow: inset 0 0 0 3px var(--ok); }
+  .ct { font-weight: 600; font-size: 12.5px; }
+  .cn { color: var(--muted); font-size: 11px; margin-top: 2px; line-height: 1.4; }
+  .pill {
+    display: inline-block; margin-left: 6px; padding: 1px 7px;
+    border-radius: 4px; background: #23402f; color: #8fdcb2; font-size: 10px; font-weight: 600;
+  }
+  .pill.warn { background: #3a3018; color: #e6c079; }
+  .acts { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    background: var(--btn); color: #f2fbf6; border: 0; border-radius: 7px;
+    padding: 8px 12px; font-weight: 600; font-size: 12px;
+  }
+  .ghost {
+    background: transparent; color: #c3cdd2; border: 1px solid #1d2429;
+    border-radius: 7px; padding: 7px 11px; font-size: 12px;
+  }
+  .link { color: #6f8fb8; font-size: 12px; }
+  .meta { margin-top: 12px; padding-top: 10px; border-top: 1px solid #171c20; color: #7d8a91; font-size: 11px; display: flex; gap: 8px; }
+  .mono { font-family: var(--mono); }
+
+  /* Direction A: compact toast job */
+  .toast-job {
+    position: absolute; left: 12px; right: 12px; bottom: 10px;
+    background: #080b0d; border: 1px solid #1d2429; border-radius: 10px;
+    padding: 10px 12px; display: flex; gap: 10px; align-items: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  }
+  .toast-job .spin {
+    width: 12px; height: 12px; border: 2px solid #2b343a; border-top-color: var(--ok);
+    border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .toast-job .tj-text { flex: 1; min-width: 0; }
+  .toast-job .tj-title { font-size: 12px; font-weight: 600; }
+  .toast-job .tj-sub { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .toast-job.done { border-color: #2a4a38; }
+  .toast-job.done .tj-title { color: var(--ok); }
+
+  /* Direction B: side rail */
+  .split { display: flex; height: 100%; min-height: 0; }
+  .split-main { flex: 1; min-width: 0; padding-right: 8px; overflow: hidden; }
+  .rail {
+    width: 148px; flex-shrink: 0;
+    border-left: 1px solid #1d2429;
+    padding: 0 0 0 10px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .rail h4 { margin: 0; font-size: 10px; letter-spacing: .08em; color: #7d8a91; text-transform: uppercase; }
+  .rail pre {
+    margin: 0; flex: 1; overflow: hidden;
+    font-family: var(--mono); font-size: 9.5px; line-height: 1.45; color: #96a3aa;
+    white-space: pre-wrap;
+  }
+  .rail .chip { font-size: 10px; color: var(--ok); }
+
+  /* Direction C: modal sheet */
+  .sheet-dim {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,.45);
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .sheet {
+    width: calc(100% - 24px); margin-bottom: 12px;
+    background: #080b0d; border: 1px solid #1d2429; border-radius: 12px;
+    padding: 12px 14px; max-height: 42%;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sheet-h { display: flex; align-items: center; gap: 8px; }
+  .sheet pre {
+    margin: 0; font-family: var(--mono); font-size: 10px; line-height: 1.45;
+    color: #96a3aa; overflow: hidden; max-height: 110px;
+  }
+
+  /* Sites rows */
+  .row {
+    display: grid; grid-template-columns: 8px 1fr auto; gap: 10px;
+    align-items: center; padding: 10px 2px; border-bottom: 1px solid #171c20;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+  .dot.bad { background: #e5675f; }
+  .host { font-weight: 600; }
+  .layers { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
+  .chipx {
+    font-size: 9.5px; padding: 2px 6px; border-radius: 4px;
+    border: 1px solid #1d2429; color: #c3cdd2;
+  }
+  .chipx.ok { border-color: #2a4a38; color: var(--ok); }
+  .chipx.bad { border-color: #4a2c2a; color: #e5675f; }
+  .chipx.warn { border-color: #4a3c1c; color: #e0a33c; }
+
+  .field {
+    width: 100%; background: var(--chrome); border: 1px solid #1d2429;
+    border-radius: 7px; padding: 9px 11px; color: var(--text); margin-top: 10px;
+  }
+  .wiz-step { color: #7d8a91; font-size: 11px; margin-bottom: 10px; }
+  .suggest { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .suggest span {
+    border: 1px solid #1d2429; border-radius: 7px; padding: 6px 10px;
+    color: #c3cdd2; font-size: 11px; background: var(--chrome);
+  }
+  .compare {
+    margin-top: 36px;
+    padding: 18px 20px;
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    background: #fffef9;
+  }
+  .compare h3 { margin: 0 0 8px; font-size: 16px; }
+  .compare ul { margin: 0; padding-left: 18px; color: var(--mute); font-size: 14px; }
+  footer.ask {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #fffef9; border-top: 1px solid var(--line);
+    padding: 14px 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  }
+  footer.ask strong { margin-right: 8px; }
+</style>
+</head>
+<body>
+<header class="board">
+  <h1>dpi · sıfırdan arayüz yönleri</h1>
+  <p>
+    Sorun: komut günlüğü pencerenin yarısını yiyor ve asıl kararları (kapsam, site, aksiyon) örtüyor.
+    Aşağıda <b>3 yapı</b> var — hepsi aynı özellikleri taşıyor; farkları log’un ve ana işin nasıl düzenlendiği.
+    Birini seç; beğendiğin sayfaları not et. Sonra onu kodlarız.
+  </p>
+  <div class="pick-row">
+    <button type="button" class="on" data-dir="a">A · Sessiz operatör</button>
+    <button type="button" data-dir="b">B · Yan panel konsol</button>
+    <button type="button" data-dir="c">C · İş sayfası (sheet)</button>
+  </div>
+  <p class="note">Öneri: günlük kullanıcı için <b>A</b>. Log’u sevenler için <b>B</b>. UAC işlerini “moda” gibi yaşatmak için <b>C</b>.</p>
+</header>
+
+<main>
+  <!-- ===================== A ===================== -->
+  <section class="dir on" id="dir-a">
+    <div class="dir-head">
+      <div>
+        <span class="badge">ÖNERİLEN</span>
+        <h2>A · Sessiz operatör</h2>
+        <p class="thesis">
+          Ana içerik her zaman tam boy. Yükseltilmiş iş çalışırken altta <b>tek satırlık toast</b>
+          (başlık + son satır). Log’u “Ayrıntı” ile açarsın; bittiğinde toast yeşile döner ve 6 sn sonra küçülür.
+          Komut çıktısı asla yarım ekranı çalmaz.
+        </p>
+      </div>
+    </div>
+    <div class="pages">
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><b>Status</b><i>Sites 1</i><i>Settings</i></div>
+            <div class="mach">DNS pinned · listed sites</div>
+          </div>
+          <div class="body">
+            <div class="hero">
+              <div class="mark">✓</div>
+              <div>
+                <h3>Nothing is being blocked right now</h3>
+                <p class="lede">Every name checked opens the way a browser would open it.</p>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="pt">Apply it to</div>
+              <div class="choice">
+                <div class="radio"></div>
+                <div>
+                  <div class="ct">Everything on this machine <span class="pill">free on this connection</span></div>
+                  <div class="cn">Any blocked site works without listing it. No driver on this link.</div>
+                </div>
+              </div>
+              <div class="choice on">
+                <div class="radio"></div>
+                <div>
+                  <div class="ct">Only the sites on my list <span class="pill">recommended</span></div>
+                  <div class="cn">Games and other apps never reach the driver.</div>
+                </div>
+              </div>
+            </div>
+            <div class="acts">
+              <button class="btn" type="button">Check again</button>
+              <button class="ghost" type="button">Find strategy</button>
+              <button class="ghost" type="button">Refresh</button>
+              <span class="link">More ▾</span>
+            </div>
+            <div class="meta"><span>method</span><span class="mono">hosts pin · discord.com</span></div>
+            <div class="toast-job done">
+              <div class="tj-text">
+                <div class="tj-title">Pinned · discord.com opens</div>
+                <div class="tj-sub">Wrote hosts · browser check OK · Details</div>
+              </div>
+              <button class="ghost" type="button">Close</button>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Status · iş bitti</strong>
+          <span>Toast ~56px. Ana kararlar görünür. “Details” tıklanınca log sheet açılır.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><b>Status</b><i>Sites 1</i><i>Settings</i></div>
+            <div class="mach">nothing installed</div>
+          </div>
+          <div class="body">
+            <div class="hero">
+              <div class="mark warn">!</div>
+              <div>
+                <h3>Your provider forges address lookups</h3>
+                <p class="lede">Browser hits a bad address; the real path is fine. Pinning listed names is enough — no driver.</p>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="pt">Apply it to</div>
+              <div class="choice on"><div class="radio"></div><div><div class="ct">Only the sites on my list</div><div class="cn">Safe default.</div></div></div>
+              <div class="choice"><div class="radio"></div><div><div class="ct">Everything on this machine</div><div class="cn">Resolver change for all names.</div></div></div>
+            </div>
+            <div class="acts"><button class="btn" type="button">Pin listed names</button><button class="ghost" type="button">Check again</button></div>
+            <div class="toast-job">
+              <div class="spin"></div>
+              <div class="tj-text">
+                <div class="tj-title">Pinning these names…</div>
+                <div class="tj-sub">Waiting for administrator prompt — Details</div>
+              </div>
+              <button class="ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Status · iş çalışırken</strong>
+          <span>Spinner + tek satır durum. UAC arkada kalsa bile ne olduğu okunur. Cancel net.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><i>Status</i><b>Sites 1</b><i>Settings</i></div>
+            <div class="mach">listed sites only</div>
+          </div>
+          <div class="body">
+            <div style="display:flex;gap:8px">
+              <div class="field" style="margin:0">site.com or paste link</div>
+              <button class="btn" type="button">Add & cover</button>
+            </div>
+            <div class="row" style="margin-top:12px">
+              <div class="dot"></div>
+              <div>
+                <div class="host">discord.com</div>
+                <div class="layers">
+                  <span class="chipx warn">dns suspect</span>
+                  <span class="chipx ok">path ok</span>
+                  <span class="chipx ok">browser ok</span>
+                  <span class="chipx ok">in filter</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px"><span class="link">Test</span><span style="color:#7d8a91">×</span></div>
+            </div>
+            <div class="panel" style="margin-top:14px">
+              <div class="cn">Scope is these names only. Nothing else reaches the driver. <span class="link">Change scope</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Sites</strong>
+          <span>Katman kanıtı satırda. Add & cover = liste + filtre. Log yok — yer Sites’a kalır.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs" style="opacity:.5"><i>First run · 1 / 3</i></div>
+            <div class="mach">nothing installed</div>
+          </div>
+          <div class="body">
+            <div class="wiz-step">First run · step 1 of 3</div>
+            <h3>Name one site you cannot reach</h3>
+            <p class="lede">One is enough. Paste a whole link if that is what you have.</p>
+            <div class="field">https://discord.com/…</div>
+            <div class="suggest"><span>discord.com</span><span>github.com</span><span>youtube.com</span></div>
+            <div class="acts" style="margin-top:18px">
+              <button class="btn" type="button">Continue</button>
+              <span class="link">I’ll explore on my own</span>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Wizard</strong>
+          <span>Üç adım: site → ölç/uygula → kapsam. Log yine toast.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><i>Status</i><i>Sites</i><b>Settings</b></div>
+            <div class="mach">DNS pinned</div>
+          </div>
+          <div class="body">
+            <h3>Settings</h3>
+            <div class="panel">
+              <div class="pt">Address lookups</div>
+              <div class="choice"><div class="radio"></div><div><div class="ct">Leave them alone</div></div></div>
+              <div class="choice on"><div class="radio"></div><div><div class="ct">Pin my listed names</div><div class="cn">Intent saved.</div></div></div>
+              <div class="choice"><div class="radio"></div><div><div class="ct">Encrypted resolver (whole machine)</div></div></div>
+            </div>
+            <div class="acts">
+              <button class="btn" type="button">Apply DNS now</button>
+              <span class="cn">Choosing above only saves intent.</span>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Settings</strong>
+          <span>Intent vs Apply ayrımı korunuyor. Tehlikeli uninstall altta (mock’ta kısaltıldı).</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="compare">
+      <h3>A için sabit kural</h3>
+      <ul>
+        <li>Job yüksekliği ≤ ~64px; genişletilmeden asla %25’ten fazla ekranı kaplamaz.</li>
+        <li>Birincil CTA tek yeşil düğme; Find / Refresh / Pin “More” veya ikincil sırada.</li>
+        <li>Başarıda toast otomatik kapanır; hata kalır + Cancel/Close.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== B ===================== -->
+  <section class="dir" id="dir-b">
+    <div class="dir-head">
+      <div>
+        <span class="badge">GÜÇ KULLANICI</span>
+        <h2>B · Yan panel konsol</h2>
+        <p class="thesis">
+          Sol: karar ve listeler (her zaman). Sağ: dar <b>Activity</b> rayı — log buraya akar,
+          içeriğin üstüne binmez. Pin/install sırasında sağ panel canlanır; Status/Sites kaybolmaz.
+        </p>
+      </div>
+    </div>
+    <div class="pages">
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><b>Status</b><i>Sites</i><i>Settings</i></div>
+            <div class="mach">running</div>
+          </div>
+          <div class="body" style="padding:12px 10px">
+            <div class="split">
+              <div class="split-main">
+                <div class="hero">
+                  <div class="mark">✓</div>
+                  <div><h3>Nothing blocked</h3><p class="lede">Browser view OK for listed names.</p></div>
+                </div>
+                <div class="panel">
+                  <div class="pt">Apply it to</div>
+                  <div class="choice on"><div class="radio"></div><div><div class="ct">Listed sites only</div></div></div>
+                  <div class="choice"><div class="radio"></div><div><div class="ct">Whole machine</div></div></div>
+                </div>
+                <div class="acts"><button class="btn" type="button">Check again</button></div>
+              </div>
+              <aside class="rail">
+                <h4>Activity</h4>
+                <div class="chip">● pinning…</div>
+                <pre>Administrator approved
+pinning discord.com
+162.159.128.233
+wrote hosts
+browser  OK</pre>
+              </aside>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Status + Activity</strong>
+          <span>Log her zaman görünür ama ~150px. Ana kararlar örtülmez.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><i>Status</i><b>Sites</b><i>Settings</i></div>
+            <div class="mach">listed</div>
+          </div>
+          <div class="body" style="padding:12px 10px">
+            <div class="split">
+              <div class="split-main">
+                <div class="field" style="margin:0">Add site…</div>
+                <div class="row"><div class="dot"></div><div><div class="host">discord.com</div><div class="layers"><span class="chipx ok">opens</span></div></div><span class="link">Test</span></div>
+              </div>
+              <aside class="rail">
+                <h4>Activity</h4>
+                <pre>idle
+last: pin OK
+2 min ago</pre>
+              </aside>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Sites + Activity</strong>
+          <span>Dar pencerede Sites sıkışabilir — risk bu.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="compare">
+      <h3>B tradeoff</h3>
+      <ul>
+        <li>Artı: log her zaman orada; “ne oldu?” sorusu anında.</li>
+        <li>Eksi: 880px min genişlikte Sites satırları sıkışır; mobil/dar pencere zayıf.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== C ===================== -->
+  <section class="dir" id="dir-c">
+    <div class="dir-head">
+      <div>
+        <span class="badge">ODAKLI İŞ</span>
+        <h2>C · İş sayfası (sheet)</h2>
+        <p class="thesis">
+          Normalde log yok. UAC’li iş başlayınca alttan <b>modal sheet</b> çıkar (karartmalı),
+          sadece o iş bitene kadar. Bitince sheet kapanır; Status’ta yeşil özet chip kalır.
+          “Konsol yaşamak” isteyenler Details ile tekrar açar.
+        </p>
+      </div>
+    </div>
+    <div class="pages">
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><b>Status</b><i>Sites</i><i>Settings</i></div>
+            <div class="mach">nothing installed</div>
+          </div>
+          <div class="body">
+            <div class="hero">
+              <div class="mark warn">!</div>
+              <div><h3>Provider forges lookups</h3><p class="lede">Pin listed names — no driver.</p></div>
+            </div>
+            <div class="panel">
+              <div class="choice on"><div class="radio"></div><div><div class="ct">Only my list</div></div></div>
+            </div>
+            <div class="acts"><button class="btn" type="button">Pin listed names</button></div>
+            <div class="sheet-dim">
+              <div class="sheet">
+                <div class="sheet-h">
+                  <div class="spin" style="width:12px;height:12px;border:2px solid #2b343a;border-top-color:var(--ok);border-radius:50%;animation:spin .8s linear infinite"></div>
+                  <strong style="flex:1">Pinning these names</strong>
+                  <button class="ghost" type="button">Cancel</button>
+                </div>
+                <pre>Waiting for administrator…
+Administrator approved — running…
+pinning 1 name(s)
+  discord.com  162.159.128.233 …</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Status · sheet açık</strong>
+          <span>Kasıtlı olarak odağı çalar — çünkü UAC’li iş kritik. Bitince kaybolur.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="win">
+          <div class="top">
+            <div class="brand">⌁ <span>dpi</span></div>
+            <div class="tabs"><b>Status</b><i>Sites</i><i>Settings</i></div>
+            <div class="mach">DNS pinned</div>
+          </div>
+          <div class="body">
+            <div class="hero">
+              <div class="mark">✓</div>
+              <div><h3>Nothing is being blocked</h3><p class="lede">discord.com opens.</p></div>
+            </div>
+            <div class="acts">
+              <button class="btn" type="button">Check again</button>
+              <span class="ghost" style="display:inline-block">Last job · Pin OK · view log</span>
+            </div>
+            <div class="panel" style="margin-top:16px">
+              <div class="pt">Apply it to</div>
+              <div class="choice on"><div class="radio"></div><div><div class="ct">Only the sites on my list</div></div></div>
+              <div class="choice"><div class="radio"></div><div><div class="ct">Everything on this machine</div></div></div>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Status · sheet kapalı</strong>
+          <span>Tam ekran karar yüzeyi. Geçmiş iş bir chip olarak durur.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="compare">
+      <h3>C tradeoff</h3>
+      <ul>
+        <li>Artı: iş yokken en temiz Status; log “istisna”.</li>
+        <li>Eksi: sheet açıkken kapsam değiştiremezsin (bilerek). Uzun search’te biraz boğucu olabilir.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="ask">
+  <strong>Seç:</strong>
+  <span>A / B / C yazman yeterli. İstersen karışım da olur (ör. “A ama Sites B’deki gibi”). Beğenince uygularım — şimdi kod yok.</span>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.pick-row button');
+  const dirs = {
+    a: document.getElementById('dir-a'),
+    b: document.getElementById('dir-b'),
+    c: document.getElementById('dir-c'),
+  };
+  buttons.forEach((b) => b.addEventListener('click', () => {
+    buttons.forEach((x) => x.classList.toggle('on', x === b));
+    Object.entries(dirs).forEach(([k, el]) => el.classList.toggle('on', k === b.dataset.dir));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }));
+</script>
+</body>
+</html>

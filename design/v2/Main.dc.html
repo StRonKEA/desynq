@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="width: 1000px; height: 660px; box-sizing: border-box; background: #0e1114; color: #eaeef0; font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column;">
+
+  <!-- one quiet top strip: identity left, machine state right -->
+  <div style="display: flex; align-items: center; padding: 0 22px; height: 52px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ec98a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4l3-7 4 14 3-7h6"></path>
+      </svg>
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">dpi</span>
+    </div>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 13px; color: #7d8a91;">Not protecting anything yet</span>
+    <div style="width: 30px; height: 30px; margin-left: 14px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7d8a91" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 8.6a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V10a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-grow: 1; min-height: 0;">
+
+    <!-- rail: names and a dot. no chips, no verdict words. -->
+    <div style="width: 210px; flex-shrink: 0; padding: 4px 12px 0 14px; display: flex; flex-direction: column;">
+
+      <div style="display: flex; align-items: center; gap: 11px; padding: 11px 12px; border-radius: 7px; background: #1a2025;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #e5675f; flex-shrink: 0;"></span>
+        <span style="font-size: 14px; font-weight: 600;">discord.com</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 11px; padding: 11px 12px; border-radius: 7px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #4ec98a; flex-shrink: 0;"></span>
+        <span style="font-size: 14px; color: #c3cdd2;">github.com</span>
+      </div>
+
+      <div style="flex-grow: 1;"></div>
+
+      <div style="display: flex; align-items: center; gap: 9px; padding: 11px 12px; color: #7d8a91;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7d8a91" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        <span style="font-size: 13.5px;">Add a site</span>
+      </div>
+    </div>
+
+    <!-- one surface. one answer. one button. -->
+    <div style="flex-grow: 1; min-width: 0; padding: 4px 26px 24px 12px; display: flex; flex-direction: column;">
+
+      <div style="padding: 26px 30px 28px; border-radius: 10px; background: #151a1e;">
+
+        <div style="font-size: 25px; font-weight: 600; letter-spacing: -0.02em;">discord.com</div>
+
+        <div style="margin-top: 14px; font-size: 17px; line-height: 1.5; color: #eaeef0;">
+          Your provider is sending this name to the wrong server, so the site cannot open.
+        </div>
+        <div style="margin-top: 9px; font-size: 13.5px; line-height: 1.6; color: #96a3aa; max-width: 520px;">
+          No amount of traffic reshaping helps a connection aimed at the wrong address.
+          The fix writes the real addresses for this site only &mdash; your other browsing is untouched.
+        </div>
+
+        <div style="margin-top: 22px; display: flex; align-items: center; gap: 14px;">
+          <div style="padding: 11px 20px; border-radius: 7px; background: #2f6f52; font-size: 14.5px; font-weight: 600; color: #f2fbf6;">
+            Fix this site
+          </div>
+          <span style="font-size: 13px; color: #7d8a91;">takes a second &middot; asks for administrator once</span>
+        </div>
+
+        <!-- the whole three-layer diagnosis, as one quiet line -->
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #232a2f; display: flex; gap: 34px;">
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 12.5px; color: #7d8a91;">Address lookup</span>
+            <span style="font-size: 14px; font-weight: 600; color: #e5675f;">wrong answer</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 12.5px; color: #7d8a91;">Connection</span>
+            <span style="font-size: 14px; font-weight: 600; color: #4ec98a;">reaches the site</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 12.5px; color: #7d8a91;">In a browser</span>
+            <span style="font-size: 14px; font-weight: 600; color: #e5675f;">block page</span>
+          </div>
+          <div style="flex-grow: 1;"></div>
+          <div style="display: flex; align-items: flex-end;">
+            <span style="font-size: 13px; color: #6f8fb8;">Show the measurements</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex-grow: 1;"></div>
+
+      <div style="padding: 0 4px; display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 12.5px; color: #7d8a91;">Checked 1 minute ago</span>
+        <span style="font-size: 12.5px; color: #7d8a91;">&middot;</span>
+        <span style="font-size: 12.5px; color: #6f8fb8;">Check again</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

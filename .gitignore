@@ -1,0 +1,21 @@
+# build output
+/dpi
+/dpi.exe
+*.exe
+
+# vendored engine binaries (downloaded, not committed)
+/tools/
+
+# logs and local scratch
+*.log
+
+# generated configuration
+/config/
+
+# wails frontend deps and build output
+/ui/frontend/node_modules/
+/ui/frontend/dist/
+/ui/build/bin/
+
+# playwright verification output
+/.playwright-mcp/

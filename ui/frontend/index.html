@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desynq</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="win-frame">
+    <header class="titlebar" id="titlebar" style="--wails-draggable:drag">
+      <div class="wordmark">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);margin-right:2px"><path d="M4 4h7a8 8 0 0 1 8 8 8 8 0 0 1-8 8H4V4z"/><path d="M9 8l4 4-4 4" stroke-width="2"/><circle cx="16" cy="12" r="1.5" fill="currentColor"/></svg>
+        Desynq <span class="wordmark-badge">v1.0</span>
+      </div>
+      <div class="title-right" style="--wails-draggable:no-drag">
+        <button type="button" class="gear-btn" id="settingsBtn" aria-label="Ayarlar" title="Ayarlar">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+        <div class="win-ctrls">
+          <button type="button" class="win-ctrl" id="winMin" aria-label="Simge durumuna küçült" title="Simge durumuna küçült">
+            <svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+          <button type="button" class="win-ctrl" id="winMax" aria-label="Büyüt" title="Büyüt">
+            <svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1"/></svg>
+          </button>
+          <button type="button" class="win-ctrl close" id="winClose" aria-label="Kapat" title="Kapat (Tepsiye küçülür)">
+            <svg viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page" id="page"></main>
+
+    <!-- UNIFIED BOTTOM NOTIFICATION BANNER -->
+    <div class="job-banner" id="jobBanner" hidden aria-live="polite">
+      <div class="job-banner-left">
+        <div class="job-spinner-sm" id="jobSpinner"></div>
+        <div class="job-banner-icon" id="jobIcon" style="display:none"></div>
+        <span id="jobBannerText">İşlem yapılıyor...</span>
+      </div>
+      <button type="button" class="job-action-btn" id="jobActionBtn">Kapat</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

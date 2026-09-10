@@ -1,0 +1,44 @@
+{
+  "artboards": [
+    { "file": "Wizard1.dc.html", "title": "1 - Wizard: name one blocked site", "x": 0, "y": 0, "w": 1000, "h": 700 },
+    { "file": "Wizard2.dc.html", "title": "2 - Wizard: working it out", "x": 1120, "y": 0, "w": 1000, "h": 700 },
+    { "file": "Wizard3.dc.html", "title": "3 - Wizard: it works, pick a scope", "x": 2240, "y": 0, "w": 1000, "h": 700 },
+    { "file": "Main.dc.html", "title": "Status", "x": 0, "y": 860, "w": 1000, "h": 700 },
+    { "file": "Sites.dc.html", "title": "Sites - add, test, remove", "x": 1120, "y": 860, "w": 1000, "h": 700 },
+    { "file": "Test.dc.html", "title": "Test - my list, or the connection itself", "x": 2240, "y": 860, "w": 1000, "h": 700 },
+    { "file": "Networks.dc.html", "title": "Networks - one method per provider", "x": 0, "y": 1720, "w": 1000, "h": 700 },
+    { "file": "Activity.dc.html", "title": "Activity - what happened, and what it fixed alone", "x": 1120, "y": 1720, "w": 1000, "h": 700 },
+    { "file": "Settings.dc.html", "title": "Settings", "x": 2240, "y": 1720, "w": 1000, "h": 700 }
+  ],
+  "annotations": [
+    {
+      "id": "note-ideas",
+      "x": 0,
+      "y": -520,
+      "w": 500,
+      "text": "Seven ideas, not just screens.\n\n1. A WIZARD, first run and re-runnable. Name one blocked site; that is enough, because the method belongs to the provider.\n\n2. ACCEPT A PASTED LINK. People have the URL in the clipboard, not a bare domain. Reading the host out of it is the app's job, not the user's.\n\n3. ONE METHOD PER NETWORK, remembered and switched automatically. This is the answer to \"what if the user changes ISP\". Rejoining a solved network costs no search; an unknown one offers the wizard.\n\n4. SELF-HEALING. When a method dies, search again first and only speak up if that fails. Strategies expire because ISPs update DPI firmware - that is measured, not hypothetical.\n\n5. PRE-FLIGHT CHECKS. Three traps cost real debugging time in this project: NextDNS bypass-blocking makes every encrypted resolver unreachable, antivirus blocks the driver, and another bypass tool holds the same filter. Name them before a search, not after it fails.\n\n6. AN ACTIVITY LOG, so \"it broke last Tuesday\" has an answer - and so self-healing is visible rather than spooky.\n\n7. SHARE A METHOD, keyed to the provider. People already trade configs by hand; this does it properly and carries nothing personal."
+    },
+    {
+      "id": "note-row1",
+      "x": 560,
+      "y": -520,
+      "w": 500,
+      "text": "The wizard\n\nOne question, then it works. Step 2 is deliberately legible rather than a spinner: it names what it found (both layers censored), what it already fixed, how far the search has got, and offers \"take the first that works\" for anyone who does not care about the last few milliseconds.\n\nStep 3 is where scope is chosen, and the recommendation follows the measurement rather than a preference: this connection needed a driver, so named-sites-only is recommended because of anti-cheat. On a DNS-only connection the same screen recommends the opposite.\n\nStep 3 also saves the method under the network, which is what makes point 3 above real."
+    },
+    {
+      "id": "note-row2",
+      "x": 0,
+      "y": 620,
+      "w": 500,
+      "text": "The day-to-day tabs\n\nStatus is the one answer plus the scope decision. Sites is where names are added - the field is the first thing on the tab, adding measures immediately, and every row has its own Test. The banner there says something important: under machine-wide scope the list does not limit what works, it is what gets re-checked.\n\nTest answers \"how do I test system-wide?\". Your list proves the names you care about; a sample of commonly-blocked names proves the claim behind machine-wide scope. The sample is seed data you can edit, not a country setting."
+    },
+    {
+      "id": "note-row3",
+      "x": 0,
+      "y": 1480,
+      "w": 500,
+      "text": "The parts that make it survive\n\nNetworks is the ISP-change answer, and Share is the neighbour-with-the-same-provider answer.\n\nActivity is where self-healing becomes trustworthy: the amber row shows the tool noticing a dead method, searching again on its own, and carrying on without asking. Without a log that behaviour is indistinguishable from magic, and magic is not something to trust with your network settings.\n\nSettings holds one thing worth arguing for: the browser-restart warning. Chrome-family browsers keep an address cache no command can clear, and this tool has already reported success while a browser still showed the block page. That is the one case where the user genuinely must be told."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

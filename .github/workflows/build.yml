@@ -1,0 +1,89 @@
+name: Build Desynq
+
+on:
+  push:
+    branches: [ master, main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download & Extract Zapret Engine Tools
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/bol-van/zapret-win-bundle/archive/refs/heads/master.zip" -OutFile "zapret.zip"
+          Expand-Archive -Path "zapret.zip" -DestinationPath "temp_zapret"
+          New-Item -ItemType Directory -Force -Path "tools" | Out-Null
+          Move-Item -Path "temp_zapret\zapret-win-bundle-master\zapret-winws" -Destination "tools\zapret-winws" -Force
+          Remove-Item -Force "zapret.zip"
+          Remove-Item -Recurse -Force "temp_zapret"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: ui/frontend/package-lock.json
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: true
+
+      - name: Build Frontend
+        run: |
+          cd ui/frontend
+          npm ci
+          npm run build
+
+      - name: Run Tests
+        run: go test ./...
+
+      - name: Build Standalone GUI Binary
+        run: |
+          go build -ldflags="-H windowsgui -s -w" -tags desktop,production -o desynq.exe ./ui
+
+      - name: Install NSIS
+        run: choco install nsis -y
+
+      - name: Build NSIS Installer (Desynq-Setup.exe)
+        shell: pwsh
+        run: |
+          $makensis = "makensis"
+          if (Test-Path "C:\Program Files (x86)\NSIS\makensis.exe") {
+            $makensis = "C:\Program Files (x86)\NSIS\makensis.exe"
+          }
+          & $makensis -V4 build/installer.nsi
+
+      - name: Create Portable Zip (Desynq-Portable.zip)
+        shell: pwsh
+        run: |
+          Compress-Archive -Path desynq.exe, tools, README.md -DestinationPath Desynq-Portable.zip
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Desynq-Windows-x64
+          path: |
+            Desynq-Setup.exe
+            Desynq-Portable.zip
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Desynq-Setup.exe
+            Desynq-Portable.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
